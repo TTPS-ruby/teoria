@@ -1,6 +1,10 @@
+git branch -D gh-pages
+git push origin :gh-pages
 git checkout --orphan gh-pages
 cat slides-*.md > slides.md
-bundle exec reveal-ck generate -f $FILE_CLASS -d slides
+bundle exec reveal-ck generate -f slides.md -d slides
+git rm -fr .
+rm slides.md && mv slides/* . && rmdir slides
 git add -A .
 git commit -a -m "Publico en GH"
 git push origin gh-pages
