@@ -1,0 +1,6 @@
+git checkout --orphan gh-pages
+cat slides-*.md > slides.md
+bundle exec reveal-ck generate -f $FILE_CLASS -d slides
+git add -A .
+git commit -a -m "Publico en GH"
+git push origin gh-pages
