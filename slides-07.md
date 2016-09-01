@@ -1,83 +1,71 @@
-!SLIDE center transition=uncover
+***
 # Bloques e iteradores
+---
 
-!SLIDE bullets small transition=uncover
-# Introducción
-
-## En `samples/05/words_frequency/top_five` usamos:
-	@@@ ruby
-	for i in 0...5
-		word = top_five[i][0]
-		count = top_five[i][1]
-		puts "#{word}: #{count}"
-	end
-
-En cualquier lenguaje esto es natural
-
-## Mucho más intuitivo es:
-	@@@ ruby
-	top_five.each do |word, count|
-		puts "#{word}: #{count}"
-	end
-
-	# o más simple:
-	top_five.each { |word, count| puts "#{word}: #{count}" }
-
-!SLIDE smbullets smaller transition=uncover
-# Bloques
+## Bloques
 * Un bloque es código encerrado entre llaves o las palabras claves `do` y `end`
 * Ambas formas son idénticas, salvo por la precedencia 
-	* Cuando el código del bloque entra en una línea usar {}
-	* Cuando tiene más de una línea usar `do` / `end`
+  * Cuando el código del bloque entra en una línea usar {}
+  * Cuando tiene más de una línea usar `do` / `end`
 * Los bloques pueden verse como métodos anónimos
+---
+## Bloques
 * Pueden recibir parámetros, que se explicitan entre barras verticales `|`
 * El código de un bloque no se ejecuta cuando se define, sino que se almacenará
-	para ser ejecutado más adelante
+  para ser ejecutado más adelante
 * En ruby, los bloques sólo podrán usarse después de la *invocación* de algún
-	método
-	* Si el método recibe parámetros, entonces aparecerá luego de ellos
-	* Podría verse incluso como un parámetro extra que es pasado al método
+  método
+  * Si el método recibe parámetros, entonces aparecerá luego de ellos
+  * Podría verse incluso como un parámetro extra que es pasado al método
 
-!SLIDE smbullets smaller transition=uncover
-# Ejemplo
-## Suma de los cuadrados de los números en un arreglo
-	@@@ ruby
-	sum = 0
-	[1, 2, 3, 4].each do |value|
-		square = value * value
-		sum += square
-	end
-	puts sum
+---
+## Ejemplo
+
+Suma de los cuadrados de los números en un arreglo
+
+```ruby
+sum = 0
+[1, 2, 3, 4].each do |value|
+  square = value * value
+  sum += square
+end
+puts sum
+```
 
 * El bloque se invoca para cada elemento en el arreglo
 * El elemento del arreglo es pasado al bloque en la variable `value`
 * La variable `sum` declarada fuera del bloque es actualizada dentro del bloque
-	* **Regla importante:** *si existe una variable en el bloque con el mismo
-	  nombre que una variable dentro del alcance fuera del bloque, ambas serán la
-	  misma. En el ejemplo hay sólo una variable `sum`*
-	* Veremos que el comportamiento mencionado podremos cambiarlo
-	* Si una variable aparece sólo en el bloque, entonces será local al mismo (como
+---
+## Bloques
+
+* **Regla importante:** *si existe una variable en el bloque con el mismo
+  nombre que una variable dentro del alcance fuera del bloque, ambas serán la
+  misma. En el ejemplo hay sólo una variable `sum`*
+* Veremos que el comportamiento mencionado podremos cambiarlo
+* Si una variable aparece sólo en el bloque, entonces será local al mismo (como
 `square`)
 
-!SLIDE transition=uncover
-# Los casos no esperados
-	@@@ ruby
-	# assume Shape defined elsewhere
-	square = Shape.new(sides: 4) 
-	#
-	# .. lots of code
-	#
-	sum = 0
-	[1, 2, 3, 4].each do |value|
-		square = value * value
-		sum += square
-	end
+---
+## Los casos no esperados
 
-	puts sum
-	square.draw # BOOM!
+```ruby
+# assume Shape defined elsewhere
+square = Shape.new(sides: 4) 
+#
+# .. lots of code
+#
+sum = 0
+[1, 2, 3, 4].each do |value|
+  square = value * value
+  sum += square
+end
 
-!SLIDE small transition=uncover
-# Mas casos
+puts sum
+square.draw # BOOM!
+```
+
+---
+## Mas casos
 
 ## No sucede lo mismo con los argumentos al bloque
 
@@ -1062,4 +1050,4 @@ En cualquier lenguaje esto es natural
 
 
 
-
+***
