@@ -8,3 +8,4 @@ rm slides.md && mv slides/* . && rmdir slides
 git add -A .
 git commit -a -m "Publico en GH"
 git push origin gh-pages
+git co master

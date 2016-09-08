@@ -1,5 +1,5 @@
 ***
-# Colecciones, bloques e iteradores
+# Colecciones
 ---
 ## Introducción
 * Las colecciones representan elementos fundamentales de cualquier programa
@@ -35,7 +35,7 @@ b
 ```
 
 ---
-# Arrays y `[]`
+## Arrays y `[]`
 * Los elementos de un arreglo se acceden con el operador `[]`
 * Pero `[]` es un método (de instancia en la clase `Array`) y por tanto puede
   implementarse por cualquier subclase

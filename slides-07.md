@@ -4,7 +4,7 @@
 
 ## Bloques
 * Un bloque es código encerrado entre llaves o las palabras claves `do` y `end`
-* Ambas formas son idénticas, salvo por la precedencia 
+* Ambas formas son idénticas, salvo por la precedencia
   * Cuando el código del bloque entra en una línea usar {}
   * Cuando tiene más de una línea usar `do` / `end`
 * Los bloques pueden verse como métodos anónimos
@@ -39,8 +39,8 @@ puts sum
 ## Bloques
 
 * **Regla importante:** *si existe una variable en el bloque con el mismo
-  nombre que una variable dentro del alcance fuera del bloque, ambas serán la
-  misma. En el ejemplo hay sólo una variable `sum`*
+  nombre que una variable dentro del alcance pero creada fuera del bloque, ambas serán la
+  misma variable. En el ejemplo hay sólo una variable `sum`*
 * Veremos que el comportamiento mencionado podremos cambiarlo
 * Si una variable aparece sólo en el bloque, entonces será local al mismo (como
 `square`)
@@ -67,376 +67,420 @@ square.draw # BOOM!
 ---
 ## Mas casos
 
-## No sucede lo mismo con los argumentos al bloque
+No sucede lo mismo con los argumentos al bloque
 
-	@@@ ruby
-	value = "some shape"
-	[ 1, 2 ].each {|value| puts value }
-	puts value
+```ruby
+value = "some shape"
+[ 1, 2 ].each {|value| puts value }
+puts value
+```
 
-## Podemos solucionar el problema de `square`
+Podemos solucionar el problema de `square`
 
-	@@@ ruby
-	square = "some shape"
-	sum = 0
-	[1, 2, 3, 4].each do |value; square|
-		square = value * value # different variable
-		sum += square
-	end
-	puts sum
-	puts square
+```ruby
+square = "some shape"
+sum = 0
+[1, 2, 3, 4].each do |value; square|
+  square = value * value # different variable
+  sum += square
+end
+puts sum
+puts square
+```
 
-!SLIDE smbullets smaller transition=uncover
-# La magia de los bloques
+---
+## La magia de los bloques
+
 * Mencionamos que los bloques se utilizan de forma adyacente a la llamada a un
-	método y que no se ejecutan en el momento en que aparecen en el código
+  método y que no se ejecutan en el momento en que aparecen en el código
 * Para lograr este comportamiento, dentro de un método cualquiera, podremos
-	invocar un bloque
-	* Los bloques se invocarán como si fueran métodos
-	* Para invocar un bloque se utiliza la sentencia `yield`
-	* Al invocar `yield` ruby invocará al código del bloque 
-	* Cuando el bloque finaliza, ruby devuelve el código inmediatamente al
-	  finalizar el llamado a `yield`
+  invocar un bloque
+  * Los bloques se invocarán como si fueran métodos
+  * Para invocar un bloque se utiliza la sentencia `yield`
+  * Al invocar `yield` ruby invocará al código del bloque 
+  * Cuando el bloque finaliza, ruby devuelve el código inmediatamente al
+    finalizar el llamado a `yield`
+---
+## Ejemplo de un bloque
 
-## Un ejemplo
-	@@@ ruby
-	def three_times
-		yield
-		yield
-		yield
-	end
-	three_times { puts "Hola" }
+```ruby
 
-!SLIDE bullets transition=uncover
-# Parámetros a un bloque
-* Cuando utilizamos yield podemos enviarle un parámetro
+def three_times
+  yield
+  yield
+  yield
+end
+
+three_times { puts "Hola" }
+```
+
+---
+## Parámetros a un bloque
+
+* Cuando utilizamos `yield` podemos enviarle un parámetro
   * El parámetro enviado se mapea con el definido en el bloque entre las barras
     verticales
 * Un bloque puede retornar un valor y ser usado en el método
 
-!SLIDE bullets transition=uncover
-# Ejemplo de envío de parámetros
-	@@@ ruby
-	def fib_up_to(max)
-		i1, i2 = 1, 1
-		while i1 <= max
-			yield i1
-			i1, i2 = i2, i1+i2
-		end
-	end
+---
+## Ejemplo de envío de parámetros
 
-	fib_up_to(1000) {|f| print f, " " }
+```ruby
 
-!SLIDE bullets transition=uncover
-# Ejemplo de uso del valor retornado
-	@@@ ruby
-	class Array
-		def my_find
-			for i in 0...size
-				value = self[i]
-				return value if yield(value)
-			end
-			return nil
-		end
-	end
+def fib_up_to(max)
+  i1, i2 = 1, 1
+  while i1 <= max
+    yield i1
+    i1, i2 = i2, i1+i2
+  end
+end
 
-	(1..200).to_a.my_find {|x| x%5 == 0}
-	(1..200).to_a.my_find {|x| x == 0}
+fib_up_to(1000) {|f| print f, " " }
 
-!SLIDE bullets transition=uncover
-# Los iteradores
+```
+
+---
+## Ejemplo de uso del valor retornado
+
+```ruby
+
+class Array
+  def my_find
+    for i in 0...size
+      value = self[i]
+      return value if yield(value)
+    end
+    return nil
+  end
+end
+
+(1..200).to_a.my_find {|x| x%5 == 0}
+
+(1..200).to_a.my_find {|x| x == 0}
+
+```
+
+---
+## Los iteradores
 * Las clases que implementan colecciones, como `Array` *hacen lo que hacen
-	mejor:*
-	* Acceder a los elementos que contienen
+  mejor:*
+  * Acceder a los elementos que contienen
 * El comportamiento de qué hacer con cada elemento lo delegan a la aplicación
-	* Permitiendo que nos concentremos sólo en un requerimiento particular
-	* En los casos anteriores (`find`), sería encontrar un elemento para el cual
-	  el criterio sea verdadero
+  * Permitiendo que nos concentremos sólo en un requerimiento particular
+  * En los casos anteriores (`find`), sería encontrar un elemento para el cual
+    el criterio sea verdadero
 
-!SLIDE bullets small transition=uncover
-# Los iteradores `each` y `collect`
+---
+## Los iteradores each y collect
+
 * El iterador `each` es el más simple 
-	* Solo invoca `yield` para cada elemento
+  * Solo invoca `yield` para cada elemento
 * El iterador `collect` también conocido como `map` 
-	* Invoca `yield` para cada elemento. El resultado lo guarda en un nuevo 
-	arreglo que es **retornado**
+  * Invoca `yield` para cada elemento. El resultado lo guarda en un nuevo 
+  arreglo que es **retornado**
 
 ## Ejemplos
 
-	@@@ ruby
-	[ 1, 3, 5, 7, 9 ].each {|i| puts i }
+```ruby
+[ 1, 3, 5, 7, 9 ].each {|i| puts i }
 
-	['k','h','m','t','w'].collect {|x| x.succ }
+['k','h','m','t','w'].collect {|x| x.succ }
+```
 
-!SLIDE smbullets smaller transition=uncover
-# Otros usos de iteradores 
+---
+## Otros usos de iteradores 
 * Los iteradores no solo se usan con array y hash
-* Su lógica es muy utilizada en las clases de entrada / salida
-  * Estas clases implementan una interfaz de iterador que retorna líneas
-    sucesivas o bytes si trabajamos en bajo nivel
+* Su lógica es muy utilizada en clases de entrada / salida para retornar
+  líneas sucesivas o bytes
 
 ## Ejemplo
-	@@@ ruby
-	f = File.open("testfile")
-	f.each { |line| puts "The line is: #{line}"}
-	f.close
+```ruby
+f = File.open("testfile")
+f.each { |line| puts "The line is: #{line}"}
+f.close
+```
 
-## Y si necesitamos el índice
-	@@@ ruby
-	f = File.open("testfile")
-	f.each_with_index do |line, index| 
-		puts "Line #{index} is: #{line}" 
-	end
-	f.close
+Y si necesitamos el índice
 
-!SLIDE smbullets small transition=uncover
-# El caso de `inject`
+```ruby
+f = File.open("testfile")
+f.each_with_index do |line, index| 
+  puts "Line #{index} is: #{line}" 
+end
+f.close
+```
+
+---
+## El caso de inject
 * Este iterador tiene un nombre *raro*
 * Permite acumular un valor a lo largo de los miembros de una colección
 * Recibe un parámetro que es el valor inicial para comenzar a acumular
-	* Si no se especifica **toma el primer elemento de la colección**
+  * Si no se especifica **toma el primer elemento de la colección**
 
-## Ejemplos
-	@@@ ruby
-	[1,3,5,7].inject(0) {|sum, element| sum+element}
-	[1,3,5,7].inject {|sum, element| sum+element}
+### Ejemplos
+```ruby
+[1,3,5,7].inject(0) {|sum, element| sum+element}
 
-	[1,3,5,7].inject(1) {|prod, element| prod*element}
-	[1,3,5,7].inject {|prod, element| prod*element}
+[1,3,5,7].inject {|sum, element| sum+element}
 
-!SLIDE smbullets small transition=uncover
-# El caso de `inject`
-## Generando más mística para `inject`
+[1,3,5,7].inject(1) {|prod, element| prod*element}
 
-	@@@ ruby
+[1,3,5,7].inject {|prod, element| prod*element}
+```
 
-	[1,3,5,7].inject(:+)
+---
+## El caso de inject
+
+Generando más mística para `inject`
+
+```ruby
+[1,3,5,7].inject(:+)
 
 
-	[1,3,5,7].inject 100, :+ 
+[1,3,5,7].inject 100, :+
 
 
-	[1,3,5,7].inject(:*)
+[1,3,5,7].inject(:*)
+```
 
-!SLIDE bullets transition=uncover
-# Enumerators
+---
+## Enumerators
 * Los iteradores son muy cómodos pero:
-	* Son parte de la colección y no una clase a parte
-	* En otros lenguajes (como Java), las colecciones no implementan sus
-	  iteradores, sino que son clases separadas (como por ejemplo la interfaz 
-		Iterator de Java)
-	* Es complicado iterar dos colecciones simultáneamente
+  * Son parte de la colección y no una clase a parte
+  * En otros lenguajes (como Java), las colecciones no implementan sus
+    iteradores, sino que son clases separadas (como por ejemplo la interfaz 
+    Iterator de Java)
+  * Es complicado iterar dos colecciones simultáneamente
 
-!SLIDE bullets smaller transition=uncover
-# Enumerators
+---
+## Enumerators
 
 * La solución: clase `Enumerator`
-	* Se obtiene de una colección con el método `to_enum` o `enum_for`
+  * Se obtiene de una colección con el método `to_enum` o `enum_for`
 
-## Ejemplo
+### Ejemplo
 
-	@@@ ruby
-	a = [ 1, 3, "cat" ]
-	h = { dog: "canine", fox: "lupine" }
-	# Create Enumerators
-	enum_a = a.to_enum
-	enum_h = h.to_enum
-	enum_a.next 	# => 1
-	enum_h.next 	# => [ :dog, "canine" ]
-	enum_a.next 	# => 3
-	enum_h.next 	# => [ :fox, "lupine" ]
+```ruby
+a = [ 1, 3, "cat" ]
+h = { dog: "canine", fox: "lupine" }
+# Create Enumerators
+enum_a = a.to_enum
+enum_h = h.to_enum
+enum_a.next   # => 1
+enum_h.next   # => [ :dog, "canine" ]
+enum_a.next   # => 3
+enum_h.next   # => [ :fox, "lupine" ]
+```
+---
+## Enumerators a partir de iteradores
 
-*Si un iterador se utiliza sin bloque, entonces retorna un Enumerator*
+Si un iterador se utiliza sin bloque, entonces retorna un Enumerator
 
-	@@@ ruby
-	a = [1,2,3].each
-	a.next
+```ruby
 
-!SLIDE smbullets smaller transition=uncover
-# El método `loop`
+a = [1,2,3].each
+
+a.next
+
+```
+
+---
+## El método loop
 * Ejecuta el código que se encuentra dentro del bloque
 * Se puede salir con break cuando se cumple una condición
 * Si hay iteradores, `loop` terminará cuando el Enumerator se quede sin valores
 
-## Ejemplos
-	@@@ ruby
-	loop { puts "Hola" }
+### Ejemplos
 
-	i=0
-	loop do
-		puts i += 1
-		break if i >= 10
-	end
+```ruby
+loop { puts "Hola" }
 
-	short_enum = [1, 2, 3].to_enum
-	long_enum = ('a'..'z').to_enum
-	loop { puts "#{short_enum.next} - #{long_enum.next}" }
+i=0
+loop do
+  puts i += 1
+  break if i >= 10
+end
 
-!SLIDE bullets small transition=uncover
-# Usando `Enumerator` como objetos
-*  Sabemos que es posible usar `each_with_index` en `Array`
+short_enum = [1, 2, 3].to_enum
+long_enum = ('a'..'z').to_enum
+loop { puts "#{short_enum.next} - #{long_enum.next}" }
+```
 
-## Ejemplo
+---
+## Usando Enumerator como objeto
 
-	@@@ ruby
-	result = []
-	[ 'a', 'b', 'c' ].each_with_index do |item, index| 
-		result << [item, index] 
-	end
+Sabemos que es posible usar `each_with_index` en `Array`
 
-!SLIDE smbullets smaller transition=uncover
-# Usando `Enumerator` como objetos
+```ruby
+result = []
+[ 'a', 'b', 'c' ].each_with_index do |item, index| 
+  result << [item, index] 
+end
+```
 
-## ¿Y si queremos hacer lo mismo con un `String`?
+¿Y si queremos hacer lo mismo con un `String`?
+
 * No existe `each_with_index` en `String`
 * Pero sí existe `each_char` que es como `each` de `Array` pero sobre cada
-	caracter del string
-	* Si no enviamos un bloque, retornará un `Enumerator`
+  caracter del string
+  * Si no enviamos un bloque, retornará un `Enumerator`
 * La interfaz `Enumerable` define el método `each_with_index`
 
-## El código quedaría
-	@@@ ruby
-	result = []
-	"cat".each_char.each_with_index do |item, index| 
-			result << [item, index] 
-	end
-	# Incluso Matz nos simplifico mas...
-	result = []
-	"cat".each_char.with_index do |item, index| 
-			result << [item, index] 
-	end
+---
+## El código con String quedaría
+```ruby
+result = []
+"cat".each_char.each_with_index do |item, index| 
+    result << [item, index] 
+end
+# Aun más simple:
+result = []
+"cat".each_char.with_index do |item, index| 
+    result << [item, index] 
+end
+```
 
-!SLIDE smbullets small transition=uncover
-# `Enumerator` como generadores
+---
+## Enumerator como generadores
 * Podemos crear objetos enumerator explícitamente en vez de hacerlo a partir de
-	una colección
+  una colección
 * Para ello es necesario utilizar un bloque en la creación
-	* El código del bloque se usará por el objeto Enumerator cada vez que el
-	  programa principal le solicite un nuevo valor
-	* Este bloque no se ejecutará como otros bloques dado que su ejecución
-	  se disparará cada vez que se solicita el siguiente valor
+  * El código del bloque se usará por el objeto Enumerator cada vez que el
+    programa principal le solicite un nuevo valor
+  * Este bloque no se ejecutará como otros bloques dado que su ejecución
+    se disparará cada vez que se solicita el siguiente valor
   * La ejecución del bloque se pausa y vuelve al programa principal cuando se
     encuentra `yield`
   * Cuando se solicita el siguiente valor, el código del bloque continúa a
     partir de la línea siguiente al `yield`
-* Esto permite generar **secuencias infinitas** 
 
-!SLIDE smbullets small transition=uncover
-# `Enumerator` como generadores
-	@@@ ruby
-	fibonacci = Enumerator.new do |caller|
-		i1, i2 = 1, 1
-		loop do
-			caller.yield i1
-			i1, i2 = i2, i1+i2
-		end
-	end
+---
+## Enumerator como generadores
+Los enumerators creados de esta forma permiten generar **secuencias infinitas** 
 
-	6.times { puts fibonacci.next }
+```ruby
+fibonacci = Enumerator.new do |caller|
+  i1, i2 = 1, 1
+  loop do
+    caller.yield i1
+    i1, i2 = i2, i1+i2
+  end
+end
 
-## Como `Enumerator` es `Enumerable`
+6.times { puts fibonacci.next }
+```
 
-	@@@ ruby
-	fibonacci.first(1000).last
+Como `Enumerator` es `Enumerable` sería posible:
 
-!SLIDE smbullets smaller transition=uncover
-# Hay que tener cuidado!!
+```ruby
+
+fibonacci.first(1000).last
+
+```
+
+---
+## ¡Hay que tener cuidado!
 * Cuidado con los enumerators que generan listas infinitas
 * Los metodos comunes de los enumeradores como `count` y `select` tratarán de
-	leer todos los elementos antes de retornar un valor
-	* Podemos escribir la versión de `select` adecuada a nuestra lista
-	  infinita
+  leer todos los elementos antes de retornar un valor
+  * Podemos escribir la versión de `select` adecuada a nuestra lista
+    infinita
 
-## Ejemplo
-	@@@ ruby
-	def infinite_select(enum, &block)
-		Enumerator.new do |caller|
-			enum.each do |value|
-				caller.yield(value) if block.call(value)
-			end
-		end
-	end
-	
-	p infinite_select(fibonacci) {|val| val % 2 == 0}.first(5)
+```ruby
+def infinite_select(enum, &block)
+  Enumerator.new do |caller|
+    enum.each do |value|
+      caller.yield(value) if block.call(value)
+    end
+  end
+end
 
-!SLIDE smbullets smaller transition=uncover
-# Haciendo algo más conveniente
+p infinite_select(fibonacci) {|val| val % 2 == 0}.first(5)
+```
+
+---
+## Haciendo algo más conveniente
 * Podemos escribir filtros como `infinite_select` directamente en la clase
   `Enumerator`
 * Esto nos permitirá encadenar filtros:
 
-## Ejemplo
-	@@@ ruby
-	class Enumerator
-		def infinite_select(&block)
-			Enumerator.new do |caller|
-				self.each do |value|
-					caller.yield(value) if block.call(value)
-				end
-			end
-		end
-	end
-	
-	p fibonacci.
-		infinite_select {|val| val % 2 == 0}.
-		infinite_select {|val| val.to_s =~ /13\d$/ }.
-		first(2)
+``` ruby
+class Enumerator
+  def infinite_select(&block)
+    Enumerator.new do |caller|
+      self.each do |value|
+        caller.yield(value) if block.call(value)
+      end
+    end
+  end
+end
 
-!SLIDE smbullets small transition=uncover
-# Bloques como transacciones
+p fibonacci.
+  infinite_select {|val| val % 2 == 0}.
+  infinite_select {|val| val.to_s =~ /13\d$/ }.
+  first(2)
+```
+
+---
+## Bloques como transacciones
 * Podemos usar bloques para definir código que debe ejecutarse bajo ciertas
-	condiciones transaccionales.
+  condiciones transaccionales.
 * Por ejemplo:
-	* Abrir un archivo
-	* Procesarlo
-	* Cerrarlo
+  * Abrir un archivo
+  * Procesarlo
+  * Cerrarlo
 * Si bien esto podemos hacerlo secuencialmente, utilizando bloques simplificamos
-	mucho 
+  mucho 
 
-## Ejemplo básico
-	@@@ ruby
-	class File
-		def self.open_and_process(*args)
-			f = File.open(*args)
-			yield f
-			f.close()
-		end
-	end
+```ruby
+class File
+  def self.open_and_process(*args)
+    f = File.open(*args)
+    yield f
+    f.close()
+  end
+end
+```
 
-!SLIDE smbullets small transition=uncover
-# Analizamos un poco...
+---
+## Analizamos un poco...
 * El método de clase implementado fue desarrollado para que entienda los mismos
-	parámetros que `File.open` 
+  parámetros que `File.open` 
 * Para ello, lo que hicimos es pasar los parámetros tal cual se enviaron a
-	`File.open`
-	* Esto se logra definiendo como argumento al método `*args` que significa:
-	  *tomar todos los argumentos enviados al método actual y colocarlos en un
-		arreglo llamado args*
-	* Luego llamamos a `File.open(*args)`. Utilizar *args vuelve a expandir los
-	  elementos del arreglo a parámetros individuales
-* Esta técnica es tan útil, que `File.open` ya lo implementa
-	* Además de usar `File.open` para abrir un archivo, podemos usarlo para
-	  directamente procesarlo como lo hacíamos con `open_and_process`
+  `File.open`
+  * Esto se logra definiendo como argumento al método `*args` que significa:
+    *tomar todos los argumentos enviados al método actual y colocarlos en un
+    arreglo llamado args*
+  * Luego llamamos a `File.open(*args)`. Utilizar *args vuelve a expandir los
+    elementos del arreglo a parámetros individuales
 
-!SLIDE smbullets transition=uncover
-# Una versión más completa de `my_open`
-	@@@ ruby
-	class File
-		def self.my_open(*args)
-			result = file = File.new(*args)
-			if block_given?
-				result = yield file
-				file.close
-			end
-			return result
-		end
-	end
+
+---
+## Una versión más completa de my_open
+```ruby
+class File
+  def self.my_open(*args)
+    result = file = File.new(*args)
+    if block_given?
+      result = yield file
+      file.close
+    end
+    return result
+  end
+end
+```
 
 * Podría suceder un error en el procesamiento
 * Para asegurar el cierre del archivo, se deben usar excepciones, que veremos 
-	más adelante
+más adelante
 
-!SLIDE smbullets smaller transition=uncover
+<small class="fragment">
+*Esta técnica es tan útil, que `File.open` ya lo implementa.  Además de usar `File.open`
+para abrir un archivo, podemos usarlo para directamente procesarlo como lo hacíamos
+con `open_and_process`*
+</small>
+
+---
 # Los bloques pueden ser objetos
 * Recordamos que anteriormente mencionamos que los bloques son como un parámetro
 	adicional pasado a un método
@@ -586,6 +630,11 @@ square.draw # BOOM!
 		block.call
 	end
 	proc2.call(1, 2, 3, 4) { puts "in block2" }
+
+---
+# El simbolo usado como bloque
+
+Symbol#to_proc para map o inject
 
 
 !SLIDE center transition=uncover
