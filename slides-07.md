@@ -532,7 +532,7 @@ bo.call "cat"
 
 ---
 ## Los bloques pueden ser Closures
-* Recordamos haber mencionamos que los bloques pueden utilizar variables que
+* Recordamos haber mencionado que los bloques pueden utilizar variables que
   están dentro del alcance del bloque
 * Veremos ahora un uso diferente de un bloque haciendo esto
 
