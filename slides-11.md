@@ -425,5 +425,13 @@ Ver ejemplo [minitest-spec](images/samples/11/setup-teardown/test_spec.rb) y
 
 * Coverage con [simplecov](https://github.com/colszowka/simplecov)
   * [Ejemplo de salida simplecov](images/samples/11/coverage/index.html)
+---
+## Más sobre testing
+
+Es interesante seguir investigando sobre:
+
+* [Rack Test](https://github.com/brynary/rack-test) (lo veremos más adelante)
+* [Capybara](https://github.com/jnicklas/capybara)
+* [JMeter](http://jmeter.apache.org/)
 
 ***
