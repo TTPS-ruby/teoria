@@ -330,6 +330,10 @@ end
 * La DSL es agnóstico a la base de datos: funciona en MySQL, SQLite, Oracle,
   Postgres, etc
 
+<small>
+[Descargar ejemplo](images/samples/15/01-migrations.zip)
+</small>
+
 ---
 # Active Record
 
@@ -635,6 +639,9 @@ end
   * **Un arreglo**: combina multiples condiciones. Por ejemplo: `if:
     ["market.retail?", :desktop?]`
 
+---
+## Ejemplo
+[Descargar ejemplo](images/samples/15/02-validaciones.zip)
 ---
 # Active Record
 ## asociaciones
