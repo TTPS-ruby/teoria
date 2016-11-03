@@ -395,6 +395,12 @@ El archivo `views/index.erb`
   * **default_encoding**: codificación de caracteres. Por defecto se usa 
     `settings.default_encoding`
   * **views**: directorio de donde cargar los templates. Por defecto `settings.views`
+
+<small>
+Continúa
+</small>
+---
+## Templates
   * **layout**: utilizar o no layout (true/false). Si es un símbolo, especifica
     que templeta usar
   * **Content-Type**: tipo de contenido producido por el template. 
@@ -402,6 +408,9 @@ El archivo `views/index.erb`
     aplicación. Si se cambia, las variables de instancia y helpers no estarán
     disponibles.
 
+<small>
+[Descargar ejemplo](images/samples/14/sinatra-test.zip)
+</small>
 ---
 ## Templates: directorio de las vistas
 
