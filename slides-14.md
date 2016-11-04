@@ -409,7 +409,7 @@ Continúa
     disponibles.
 
 <small>
-[Descargar ejemplo](images/samples/14/sinatra-test.zip)
+[Descargar ejemplo](images/samples/14/sinatra-template.zip)
 </small>
 ---
 ## Templates: directorio de las vistas
