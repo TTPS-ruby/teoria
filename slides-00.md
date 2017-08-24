@@ -11,7 +11,7 @@
   [![car@info.unlp.edu.ar](images/assets/mail.png)](mailto:car@info.unlp.edu.ar "car@info.unlp.edu.ar")
   [![twitter](images/assets/twitter.png)](https://twitter.com/car_unlp "twitter")
   [![github](images/assets/github.png)](https://github.com/chrodriguez "github")
-* **JTP:** APU Nahuel Cuesta Luengo
+* **JTP:** Lic. Nahuel Cuesta Luengo
   [![ncuesta@cespi.unlp.edu.ar](images/assets/mail.png)](mailto:ncuesta@cespi.unlp.edu.ar "ncuesta@cespi.unlp.edu.ar")
   [![twitter](images/assets/twitter.png)](https://twitter.com/ncuestal "twitter") 
   [![github](images/assets/github.png)](https://github.com/ncuesta "github")
@@ -55,7 +55,7 @@
 ---
 ## Modalidad de cursada
 * Clases teórico prácticas: generalmente avanzaremos con las teorías los días
-  Jueves, dejando los Lunes para consultas o talleres prácticos
+  lunes, dejando los jueves para consultas o talleres prácticos
 * Aprobación de la cursada: *será necesario aprobar*
   * Entregas de un ejercicio por práctico que se desarrollará en clase. Habrá
     una evaluación por práctico (salvo el primero)
