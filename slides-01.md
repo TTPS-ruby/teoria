@@ -420,7 +420,7 @@ public void doSomething(DuckLike d) {
 ```
 
 ---
-## En Java debemos usando reflexión
+## En Java debemos usar reflexión
 
 ```java
 import java.lang.reflect.InvocationHandler;
