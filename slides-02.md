@@ -46,9 +46,6 @@
 * IronRuby
   * Ruby en .NET
   * El proyecto está inactivo
-* MacRuby
-  * Ruby (1.9.3) implementado sobre las tecnologías de Mac OS X (Objective-C)
-  * El proyecto no está tan activo
 * MagLev: 
   * Ruby en la VM GemStone/S 3.1 de VMware (Smalltalk!)
 
