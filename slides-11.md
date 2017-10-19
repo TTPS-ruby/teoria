@@ -431,7 +431,9 @@ Ver ejemplo [minitest-spec](images/samples/11/setup-teardown/test_spec.rb) y
 Es interesante seguir investigando sobre:
 
 * [Rack Test](https://github.com/brynary/rack-test) (lo veremos más adelante)
+* [Cucumber](https://cucumber.io/)
 * [Capybara](https://github.com/jnicklas/capybara)
 * [JMeter](http://jmeter.apache.org/)
+* [Vegeta](https://github.com/tsenart/vegeta)
 
 ***
