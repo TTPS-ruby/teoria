@@ -659,7 +659,11 @@ end
 
 ---
 ## Ejemplo
+
 [Descargar ejemplo](images/samples/15/02-validaciones.zip)
+
+[Ver
+README](https://github.com/TTPS-ruby/teoria/tree/master/images/samples/15/02-validaciones)
 ---
 # Active Record
 ## asociaciones
