@@ -280,7 +280,7 @@ class User < ActiveRecord::Base
 end
  
 User.create  
-# => false
+# => User not persisted
 User.create! 
 # => ActiveRecord::RecordInvalid: 
 #    Validation failed: 
