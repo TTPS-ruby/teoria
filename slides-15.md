@@ -72,8 +72,8 @@ CREATE TABLE products (
 <small>
 **Además se definen los siguientes accessors: `Product#name` y
 `Product#name=(new_name)`** <br />
-[Ver ejemplo](images/samples/15/00-intro-ar.zip): *notar que no funcionará si no existe la tabla*
-creada
+[Ver ejemplo](images/samples/15/00-intro-ar.zip): *notar que no funcionará si no existe la tabla* creada <br />
+[README](https://github.com/TTPS-ruby/teoria/tree/master/images/samples/15/00-intro-ar)
 </small>
 
 ---

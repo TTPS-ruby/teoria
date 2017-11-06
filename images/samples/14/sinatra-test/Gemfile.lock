@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.4.2)
+    minitest (5.10.3)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -20,3 +20,6 @@ DEPENDENCIES
   minitest
   rack-test
   sinatra
+
+BUNDLED WITH
+   1.15.4
