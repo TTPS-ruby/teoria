@@ -135,9 +135,19 @@ Ver [ActiveSupport::Inflector](http://api.rubyonrails.org/classes/ActiveSupport/
 ## Más convenciones sobre los esquemas
 * `(association_name)_type`: especifica el tipo de [asociaciones
   polimórifcas](http://edgeguides.rubyonrails.org/association_basics.html#polymorphic-associations)
-* `(table_name)_count`: usado para cachear el número de registros que pertenecen
+* `(table_name_plural)_count`: usado para cachear el número de registros que pertenecen
   a una asociación. Por ejemplo, una columna `comments_count` en la clase `Post` que tiene muchas instancias de `Comment`, cacheará el número de comentarios existentes para cada post.
 
+---
+## Ejemplo de herencia, logs y cache
+
+* STI necesita que la clase que admita subclases tenga un campo type
+* Los logs se habilitan con: `ActiveRecord::Base.logger = Logger.new(STDOUT)`
+* La cache de una asociaciòn se habilita con el campo `asociacion_en_plural_count` y agregando un modificador a la asociación `belongs_to` llamado `counter_cache: true`
+
+<small>
+[Descargar ejemplo](images/samples/15/00-intro-ar-logs-count-cache.zip) - [Ver README](https://github.com/TTPS-ruby/teoria/tree/master/images/samples/15/00-intro-ar-logs-count-count)
+</small>
 ---
 ##  Creando modelos en Active Record
 
