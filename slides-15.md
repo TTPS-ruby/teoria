@@ -345,6 +345,14 @@ end
 </small>
 
 ---
+## Alternativas a las Migraciones
+
+Otros productos que hacen algo similar:
+
+ * https://flywaydb.org/
+ * http://www.liquibase.org/
+
+---
 # Active Record
 
 ##validaciones
