@@ -10,4 +10,4 @@ end
 
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
-Product.last.items.create name: 'new_item'
+#Product.last.items.create name: 'new_item'

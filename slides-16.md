@@ -261,8 +261,10 @@ No son importantes cuando estamos aprendiendo rails...
 * Si listamos el contenido del directorio, nos encontramos con seis carpetas que
   estarán presentes en todo proyecto rails:
   * assets
+  * channels
   * **controllers**
   * helpers
+  * jobs
   * mailers
   * **models**
   * **views**
@@ -276,6 +278,8 @@ No son importantes cuando estamos aprendiendo rails...
   expanden un pequeño comando en strings más extensos de tags HTML y contenido
 * La carpeta `assets/` contiene estilos CSS y Javascripts que son procesados
   por *sprockets*
+* La carpeta `channels/` contiene código de websockets
+* La carpeta `jobs/` contiene tareas asíncronas
 ---
 ## Las Gemas de Rails
 * Rails en sí es una gema que, de hecho, requiere un conjunto de otras gemas
@@ -306,9 +310,9 @@ gemas
   * [sass-rails](https://github.com/rails/sass-rails) - habilita el uso de sintaxis SCSS para los estilos
   * [uglifier](https://github.com/lautis/uglifier) - compresor de JavaScript
   * [coffee-rails](https://github.com/rails/coffee-rails) - habilita el uso de sintaxis CoffeeScript para JavaScript
-  * [jquery-rails](https://github.com/rails/jquery-rails) - agrega la librería JavaScript jQuery 
   * [turbolinks](https://github.com/rails/turbolinks) - técnica que acelera la carga de páginas web
   * [jbuilder](https://github.com/rails/jbuilder) - utilidad para la codificacion de datos en JSON
+  * ~~[jquery-rails](https://github.com/rails/jquery-rails) - agrega la librería JavaScript jQuery~~
 
 <small>
 Puede que no se utilice ni SQLite, SCSS, jQuery u otras gemas, pero la mayoría
@@ -333,35 +337,40 @@ De propósito general
 ## Más gemas útiles
 Para mejorar el estilo visual
 
-* [bootstrap-sass](https://github.com/twbs/bootstrap-sass) - Bootstrap 2 y 3 con Sass
+* [bootstrap-sass](https://github.com/twbs/bootstrap-sass) - Bootstrap 3 con Sass
+* [bootstrap](https://github.com/twbs/bootstrap-rubygem) - Bootstrap 4 con Sass
 * [compass-rails](https://github.com/Compass/compass-rails) - simplifica el manejo de estilos para poder usar [Zurb Fundation](http://foundation.zurb.com/) por ejemplo
-* [zurb-foundation](https://github.com/zurb/foundation) - front-end framework
+* [zurb-foundation](https://github.com/zurb/foundation-rails) - Fundation on
+  rails projects
+* [web-console](https://github.com/rails/web-console) - simplifica la búsqueda de errores
+* [rails_layout](https://github.com/RailsApps/rails_layout) - genera archivos para el layout de la aplicación usando Twitter Bootstrap o Zurb Fundation
+
 ---
 ## Más gemas útiles
 
 Para simplificar la labor de desarrollo
 
-* [better_errors](https://github.com/charliesome/better_errors) - simplifica
-  la búsqueda de errores
-* [quiet_assets](https://github.com/evrone/quiet_assets) - elimina mensajes
-  que distraen en los logs
-* [rails_layout](https://github.com/RailsApps/rails_layout) - genera archivos para el layout de la aplicación usando Twitter Bootstrap o Zurb Fundation
-* [guard-livereload](https://github.com/guard/guard-livereload) - simplifica
-  el trabajo con las vistas autoactualizando el navegador cuando se modifica
-  alguna vista
+* [lograge](https://github.com/roidrage/lograge) - normaliza los logs
+* [devise](https://github.com/roidrage/lograge) - autenticación
+* [cancancan](https://github.com/CanCanCommunity/cancancan) - autorización
+* [sidekiq](https://github.com/mperham/sidekiq) - tareas asíncronas
+* [capistrano](http://capistranorb.com/) - despliegue automatizado
+* ~~[quiet_assets](https://github.com/evrone/quiet_assets) - elimina mensajes
+  que distraen en los logs~~
 ---
 ## Configuraciones
 * Rails es conocido por su lema: **convention over configuration**
   * Al aplicarlo, se reducen muchas configuraciones
   * No todas las configuraciones pueden eliminarse
   * Las aplicaciones requieren credenciales o API keys para poder funcionar
-* El verisonado con **git** debe evitar el guardado de estas credenciales
+* El versionado con **git** debe evitar el guardado de estas credenciales
 ---
 ## Configuraciones
 * Una buena práctica para configurar estos datos es usar variables de entorno
   dado que:
   * La soportan todos SO como Windows, Mac y Linux, así como Heroku y otras
     plataformas de deployment
+      * Hoy muy usado en docker 
   * Las variables de ambiente pueden accederse desde ruby
   * Mantienen la privacidad del proyecto de forma independiente
   * La gema **[figaro](https://github.com/laserlemon/figaro)** permite setear
@@ -785,26 +794,6 @@ Podemos mejorar el error agregando la gema `better_errors` al `Gemfile`
 </small>
 
 ---
-## El mismo error con better_errors
-
-Mensajes más claros
-![Error better errors](images/16/07-better-errors-no-repl.png)
-
-<small>
-Si hacemos caso al mensaje marcado en rojo, podemos agregar una consola REPL
-como irb que nos permitirá debugear el código. 
-<br />
-El mensaje sugiere agregar la gema `binding_of_caller` al `Gemfile`
-</small>
-
----
-## El mismo error con better_errors
-
-Mensajes más claros + consola
-
-![Error better errors](images/16/07-better-errors-repl.png)
-
----
 ## El modelo
 
 * La mayoría de los modelos rails obtienen datos desde una base de datos
@@ -1051,6 +1040,9 @@ class VisitorsController < ApplicationController
   end
 end
 ```
+
+<small>En vez de DISASTER, podría haberse usado `console` proporcionado por
+**web-console**</small>
 ---
 ## Al ingresar a la página veremos
 ![error stack trace](images/16/08-stacktrace.png)
@@ -1058,7 +1050,7 @@ end
 ---
 ## El Stack Trace
 
-La captura muestra el error así porque usamos la gema **better_errors**
+La captura muestra el error así porque usamos la gema **web-console**
 
 ### En la consola veremos
 ```bash
