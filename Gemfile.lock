@@ -12,8 +12,8 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
-    eventmachine (1.2.5)
-    ffi (1.9.18)
+    eventmachine (1.2.7)
+    ffi (1.9.25)
     formatador (0.2.5)
     gemoji (2.1.0)
     gli (2.13.2)
@@ -36,16 +36,16 @@ GEM
       activesupport (>= 2, < 5)
       nokogiri (>= 1.4, <= 1.6.5)
     http_parser.rb (0.6.0)
-    i18n (0.9.1)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lumberjack (1.0.12)
+    lumberjack (1.0.13)
     method_source (0.9.0)
     mini_portile (0.6.2)
-    minitest (5.10.3)
-    multi_json (1.12.2)
+    minitest (5.11.3)
+    multi_json (1.13.1)
     nenv (0.3.0)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -59,7 +59,7 @@ GEM
     rack-livereload (0.3.16)
       rack
     rake (10.4.2)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.3.2)
@@ -88,7 +88,7 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.1)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
 
 PLATFORMS
@@ -98,4 +98,4 @@ DEPENDENCIES
   reveal-ck (~> 3.3.1)
 
 BUNDLED WITH
-   1.14.6
+   1.16.2
