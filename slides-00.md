@@ -25,8 +25,8 @@
 
 ---
 ## Horarios de cursada
-* **Lunes de 19 a 21 Aula 1-1**
-* **Jueves de 19 a 21 Aula 1-1**
+* **Martes de 11 a 13 Aula 10-A**
+* **Jueves de 11 a 13 Aula 10-A**
 
 ---
 ## Programa
