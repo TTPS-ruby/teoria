@@ -3,8 +3,7 @@
 ---
 ## Objetos y atributos
 
-* Luego de haber recibido una *Introducción de Ruby* ya conocemos un poco sobre la
-sintáxis de este lenguaje
+* Luego de haber visto la *Introducción a Ruby*, ya conocemos un poco sobre la sintáxis de este lenguaje
 
 * Para entender mejor los objetos, vamos a hacerlo mediante un ejemplo
   tomado del libro Programming Ruby (Pick Axe)
@@ -315,8 +314,7 @@ puts "Total value in stock =  #{reader.total_value_in_stock}"
 
 * Notamos que `CsvReader` debe ir acumulando lo que va leyendo de cada csv
 * Para ello mantendremos un arreglo de valores como variable de instancia
-* Para leer un CSV, Ruby provee de una simple librería que simplificará el
-  trabajo
+* Para leer un CSV, Ruby provee de una librería que simplificará el trabajo
 
 ---
 ## Comportamiento de CsvReader

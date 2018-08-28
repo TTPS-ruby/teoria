@@ -13,7 +13,7 @@
   * 2.1.10
   * 2.2.5
   * 2.3.1
-  * 2.4.0-dev
+  * 2.4.4
 
 ---
 ## JRuby
@@ -24,11 +24,11 @@
   * Concurrencia real
   * Interoperabilidad con librerías Java
 * Últimas versiones
-  * jruby-9.1.2.0
+  * jruby-9.2.0.0
 * Modos
   * 1.8.x
-  * 1.9.x (default)
-  * 2.0.x
+  * 1.9.x 
+  * 2.x
 
 ---
 ## Rubinius
@@ -37,7 +37,7 @@
 * La VM fue escrita en C++
 * El bytecode compiler y una gran parte de las clases Core de Ruby fueron escritas en Ruby
 * Últimas versiones
-  * rbx-3.48
+  * rbx-3.105
   * rbx-2.11
 
 ---
@@ -102,15 +102,7 @@ Bundler
 * Fue la primera alternativa a RVM y rápidamente se hizo muy popular
 * Es más simple que RVM y ya no instala rubies ni usa gemsets
 * Se puede agregar funcionalidad con plugins
-* Utiliza shims para cambiar de versión de ruby
 * **Es la opción que explicaremos**
-
----
-## chruby
-
-* Es el 3ro en discordia
-* Es muy minimalista (~ 100 LOC!)
-* Sólo cambia $PATH para cambiar de ruby
 
 ---
 # Instalando rbenv
@@ -173,5 +165,4 @@ git clone https://github.com/sstephenson/ruby-build.git \
 * [https://rvm.io/](https://rvm.io/)
 * [https://github.com/sstephenson/rbenv](https://github.com/sstephenson/rbenv)
 * [https://github.com/sstephenson/ruby-build](https://github.com/sstephenson/ruby-build)
-* [https://github.com/postmodern/chruby](https://github.com/postmodern/chruby)
 ***
