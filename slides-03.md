@@ -392,4 +392,12 @@ puts "Total value = #{reader.total_value_in_stock}"
 [Descargar ejemplo completo](images/samples/03/stock_stats.zip)
 </small>
 
+```bash
+awk -F',' \
+  'begin {total = 0} {total += $3} END {print "total: " total}' \
+  csv_samples/*csv
+```
+<small>
+Comprobación con AWK
+</small>
 ***
