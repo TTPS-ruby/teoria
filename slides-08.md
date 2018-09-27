@@ -77,6 +77,7 @@ class LogServer < GServer
   end
 
   def serve(client)
+    log "Connected from #{remote_ip[2]}:#{remote_ip[1]}"
     client.puts get_end_of_log_file
   end
 
