@@ -2,15 +2,12 @@
 # Tipos estándar
 ---
 ## Números
-* Los números que soporta Ruby son: 
-  * Enteros
-  * Punto flotante
-  * Racionales
-  * Complejos
-* Los enteros se manejan internamente por Ruby como binarios.
+* Los números que soporta Ruby son: Enteros, Punto flotante, Racionales,
+  Complejos
+* Antes de ruby 2.4, los enteros se manejaban internamente como:
   * Se representan con Fixnum en el rango de (-2^30..2^30-1 o -2^62..2^62-1)
-  * Fuera del rango anterior, Ruby utiliza Bignum
-  * El proceso es transparente 
+  * Fuera del rango anterior, Ruby utiliza Bignum en forma transparente
+* A partir de ruby 2.4 se usa Integer
 * Es importante considerar que los strings no se convierten automáticamente a
   enteros: `'1' + '2' => '12'`
 
