@@ -119,13 +119,18 @@ end
   usaremos para mapear la exepción (en vez de usar `$!`)
 
 ```ruby
-begin
-  eval string
-rescue SyntaxError, NameError => boom
-  print "String doesn't compile: " + boom
-rescue StandardError => bang
-  print "Error running script: " + bang
+def my_eval(string)
+  begin
+    eval string
+  rescue SyntaxError, NameError => boom
+    print "String doesn't compile: " + boom.message
+  rescue StandardError => bang
+    print "Error running script: " + bang.message
+  end
 end
+
+my_eval 'Float 2,2'
+my_eval 'undefined_method'
 ```
 ---
 ## Cómo funciona rescue
@@ -268,18 +273,20 @@ raise ArgumentError, "Name too big", caller
 ## Ejemplo de catch y throw
 
 ```ruby
-word_list = File.open("wordlist")
-word_in_error = catch(:done) do
-  result = []
-  while line = word_list.gets
-    word = line.chomp
-    throw(:done, word) unless word =~ /^\w+$/
-    result << word
+def only_words(filename)
+  word_list = File.open(filename)
+  word_in_error = catch(:done) do
+    result = []
+    while line = word_list.gets
+      word = line.chomp
+      throw(:done, word) unless word =~ /^\w+$/
+      result << word
+    end
+    puts result.reverse
   end
-  puts result.reverse
-end
-if word_in_error
-  puts "Failed: '#{word_in_error}' found. Not a word"
+  if word_in_error
+    puts "Failed: '#{word_in_error}' found. Not a word"
+  end
 end
 ```
 

@@ -114,10 +114,11 @@ end
 ---
 ## Definiendo un método
 * Los nombres de los métodos deben empezar con minúscula o underescore
-  * *No es error que el nombre comience con mayúsucla, el problema es que en la
-    invocación, Ruby tratará de interpretarlo como una constante, y por tanto
-    parsear la llamada en forma incorrecta. Por convención, los métodos que
-    comienzan con mayúscula se utilizan para conversiones de tipos*
+  * *No es error que el nombre comience con mayúsucla, pero debería recibir
+    argumentos.  Por convención, los métodos que comienzan con mayúscula se
+    utilizan para conversiones de tipos*:
+        * `def String; 'string'; end;`
+        * `String() vs String`
 * Cuando retornamos un boolean, es prolijo que el método termine con `?`
 * Aquellos métodos *peligrosos* deben terminar con `!`
 * Los métodos que aparecen a la izquierda de una asignación terminan con `=`
@@ -158,8 +159,7 @@ end
 ## Usos de splat
 * Es común que se utilice splat en una subclase para pasar los parámetros a la
   superclase usando `super`
-  * Si no se especifican parámetros a `super`, entonces se invoca el método del
-    padre con todos los argumentos que se hayan recibido
+  * `super` sin argumentos invoca el método del padre con todos los argumentos recibidos
 
 ```ruby
 class Child < Parent
@@ -389,7 +389,7 @@ a * b + c
 Podemos redefinirlos incluso
 
 ```ruby
-class Fixnum
+class Integer
   alias old_plus +
   def +(other)
     old_plus(other).succ
