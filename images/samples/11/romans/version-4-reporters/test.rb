@@ -1,7 +1,7 @@
 require_relative 'roman'
 require 'minitest/autorun'
 require 'minitest/spec'
-require 'minitest/nyan_cat'
+
 describe Roman do
   NUMBERS = [
     [ 1, "i" ], [ 2, "ii" ], [ 3, "iii" ],

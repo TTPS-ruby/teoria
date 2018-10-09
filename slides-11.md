@@ -60,7 +60,7 @@ y la respuesta inmediata será:
 ## La trivialidad
 Los tests de unidad son simples:
 
-*consiste en correr un programa que invocan una parte del código de nuestra
+*consiste en correr un programa que invoca una parte del código de nuestra
 aplicación, obtiene algunos resultados y verifica que  dichos resultados
 sean los esperados*
 
