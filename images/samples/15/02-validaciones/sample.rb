@@ -5,11 +5,11 @@ ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: '/tmp/samp
 
 class Person < ActiveRecord::Base
   validates :name, presence: true
-#  validates :terminos, acceptance: true
+  validates :terminos, acceptance: true
   attr_accessor :boolean_field_name
-  validates :boolean_field_name, presence: true
-#  validates :boolean_field_name, inclusion: { in: [true, false] }
-#  validates :boolean_field_name, exclusion: { in: [nil] }
+#  validates :boolean_field_name, presence: true
+  validates :boolean_field_name, inclusion: { in: [true, false] }
+  validates :boolean_field_name, exclusion: { in: [nil] }
 #  validates :name, format: { 
 #            with: /\A[a-zA-Z]+\z/,
 #            message: "only allows letters" }
