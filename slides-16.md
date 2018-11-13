@@ -312,7 +312,6 @@ gemas
   * [coffee-rails](https://github.com/rails/coffee-rails) - habilita el uso de sintaxis CoffeeScript para JavaScript
   * [turbolinks](https://github.com/rails/turbolinks) - técnica que acelera la carga de páginas web
   * [jbuilder](https://github.com/rails/jbuilder) - utilidad para la codificacion de datos en JSON
-  * ~~[jquery-rails](https://github.com/rails/jquery-rails) - agrega la librería JavaScript jQuery~~
 
 <small>
 Puede que no se utilice ni SQLite, SCSS, jQuery u otras gemas, pero la mayoría
@@ -339,9 +338,6 @@ Para mejorar el estilo visual
 
 * [bootstrap-sass](https://github.com/twbs/bootstrap-sass) - Bootstrap 3 con Sass
 * [bootstrap](https://github.com/twbs/bootstrap-rubygem) - Bootstrap 4 con Sass
-* [compass-rails](https://github.com/Compass/compass-rails) - simplifica el manejo de estilos para poder usar [Zurb Fundation](http://foundation.zurb.com/) por ejemplo
-* [zurb-foundation](https://github.com/zurb/foundation-rails) - Fundation on
-  rails projects
 * [web-console](https://github.com/rails/web-console) - simplifica la búsqueda de errores
 * [rails_layout](https://github.com/RailsApps/rails_layout) - genera archivos para el layout de la aplicación usando Twitter Bootstrap o Zurb Fundation
 
@@ -529,7 +525,7 @@ development:
 ## Editamos config/routes.rb
 
 ```ruby
-LearnRails::Application.routes.draw do
+Rails.application.routes.draw do
   root to: redirect('/about.html')
 end
 ```
@@ -767,14 +763,11 @@ Crearemos primero el ruteo antes de implementar el model y controller
 ### Editamos config/routes.rb
 
 ```ruby
-LearnRails::Application.routes.draw do
+Rails.application.routes.draw do
   root to: 'visitors#new'
 end
 ```
 
-* Notar el modulo **LearnRails** como prefijo
-	* Esto se debe al nombre de la aplicación que creamos con el comando `rails
-	  new learn_rails`
 * Los detalles de la sintaxis de este archivo puede 
   entenderse bien leyendo [Routing from outside in](http://guides.rubyonrails.org/routing.html)
 * Modificando `config/routes.rb` no requiere reiniciar
