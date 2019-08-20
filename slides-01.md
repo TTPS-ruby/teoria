@@ -45,7 +45,7 @@ Ruby is designed to make programmers **HAPPY**
   * Framework open source para desarrollo de aplicaciones web
   * Creado en 2004
   * Su primer versión liberada (1.0) fue en 2005
-  * Actualmente en la versión 5.2
+  * Actualmente en la versión 6.0.0
 
 ![Rails](images/01/rails.png)
 ---
