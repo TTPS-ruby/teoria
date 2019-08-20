@@ -9,11 +9,13 @@
 * Últimas versiones
   * 1.8.7-p375 (No usar!)
   * 1.9.3-p551
-  * 2.0.0-p547
+  * 2.0.0-p648
   * 2.1.10
-  * 2.2.5
-  * 2.3.1
-  * 2.4.4
+  * 2.2.10
+  * 2.3.8
+  * 2.4.6
+  * 2.5.5
+  * 2.6.3
 
 ---
 ## JRuby
@@ -24,7 +26,7 @@
   * Concurrencia real
   * Interoperabilidad con librerías Java
 * Últimas versiones
-  * jruby-9.2.0.0
+  * jruby-9.2.8.0
 * Modos
   * 1.8.x
   * 1.9.x 
@@ -37,17 +39,8 @@
 * La VM fue escrita en C++
 * El bytecode compiler y una gran parte de las clases Core de Ruby fueron escritas en Ruby
 * Últimas versiones
-  * rbx-3.105
+  * rbx-3.107
   * rbx-2.11
-
----
-## Otras implementaciones
-
-* IronRuby
-  * Ruby en .NET
-  * El proyecto está inactivo
-* MagLev: 
-  * Ruby en la VM GemStone/S 3.1 de VMware (Smalltalk!)
 
 ---
 ## Referencias
@@ -61,17 +54,6 @@
 * Rubinius: Referencias
   * [http://rubini.us/](http://rubini.us/)
   * [https://github.com/rubinius/rubinius](https://github.com/rubinius/rubinius)
----
-## Referencias
-
-* Otras implementaciones: referencias
-  * [http://ironruby.codeplex.com/](http://ironruby.codeplex.com/)
-  * [https://github.com/ironlanguages/main](https://github.com/ironlanguages/main)
-  * [http://macruby.org/](http://macruby.org/)
-  * [https://github.com/MacRuby/MacRuby](https://github.com/MacRuby/MacRuby)
-  * [http://maglev.github.io/](http://maglev.github.io/)
-  * [https://github.com/MagLev/maglev](https://github.com/MagLev/maglev)
-
 ---
 ## Instalando Ruby
 
