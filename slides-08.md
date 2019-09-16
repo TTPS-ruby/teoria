@@ -478,14 +478,14 @@ p t.test
 ## Herencia, Mixins y Diseño
 * La realidad dice que el uso de herencia no siempre se usa para representar la
   relación *es un*
-  * En realidad muchas veces se utiliza **mal** en situaciones que representan 
+  * Muchas veces se utiliza **mal** en situaciones que representan 
     una relación de *posee un* o *utiliza un*
   * El mundo se crea a partir de **composiciones** más que de restricciones de
     herencia estrictas
 * Dado que la herencia era el único mecanismo disponible para compartir código,
   nos volvimos **vagos** y empezamos a afirmar cosas como: *Que una Persona* ***es un*** *DatabaseWrapper*
   * Pero una persona no es un DatabaseWrapper
-  * Una Persona **usa** un DatabaseWrapper para proveer persistencia
+  * Una Persona **usa** un DatabaseWrapper para persistirla
 ---
 ## Herencia, Mixins y Diseño
 * La herencia además representa un gran acomplamiento entre dos componentes.
