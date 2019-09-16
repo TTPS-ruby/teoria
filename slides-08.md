@@ -148,7 +148,7 @@ server.start.join
 
 ---
 ## Namespaces
-* A medida que los programas crecen, surge código reusables
+* A medida que los programas crecen, surge código reusable
 * Es así como aparecen las librerías
 * Deseamos agrupar en archivos diferentes estas rutinas de forma tal
   de poder reusarlas en programas distintos
@@ -285,7 +285,7 @@ p3 = Person.new("Larry")
 ---
 ## Iteradores y el módulo Enumerable
 * Si queremos que nuestra clase entienda los iteradores `each`, `include?`,
-  `find_all?`
+  `find_all?`, `map`, `inject`, `count`, etc.
   * Incluimos el módulo `Enumerable`
   * Implementamos el iterador `each`
 * Si además los elementos de nuestra colección implementan `<=>` entonces
