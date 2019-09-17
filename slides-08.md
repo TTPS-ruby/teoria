@@ -464,6 +464,97 @@ p t.test
 ```
 
 ---
+## Cómo se invocan los métodos entonces
+
+Si analizamos la salida de `#ancestors` veremos la cadena Clases por la
+que se buscará por un método apropiado. Veamos el siguiente ejemplo:
+
+```ruby
+module Logging
+  def log(level, message)
+      puts "#{level}: #{message}"
+  end
+end
+
+class Service
+  include Logging
+end
+
+Service.ancestors
+```
+devuelve:
+
+```ruby
+[Service, Logging, Object, Kernel, BasicObject]
+```
+<small>
+Notar que Logging se interpone entre Object y Service
+</small>
+---
+## Ancestros y módulos
+
+Si agregamos otro Modulo a la clase anterior:
+
+```ruby
+Service.include Comparable
+```
+
+Podemos verificar que el último módulo incluido aparece detrás de la clase
+`Service`, explicando así las precedencias explicadas como casos anteriormente.
+
+---
+## Extend
+
+Utilizar `#extend` en una clase importará los métodos del módulo como métodos de
+clase.
+
+En vez de actualizar la lista de ancestros, `#extend` modificará el singleton de
+la clase extendida, agregando métodos de clase.
+
+En general, se utilizará `#include` en una clase para extender el comportamiento
+con métodos de instancia, pero a su vez podría necesitarse usar `#extend` para
+extender los métodos de clase. Entonces se necesitarían **dos modulos diferentes
+para cada caso.**
+
+---
+# Extend
+
+Para evitar crear dos módulos, se utiliza habitualmente la siguiente estrategia
+para solucionar todo en un mismo módulo:
+
+```ruby
+module Logging
+  module ClassMethods
+    def logging_enabled?
+      true
+    end
+  end
+
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+
+  def log(level, message)
+    puts "#{level}: #{message}"
+  end
+end
+```
+---
+## Extend vía include
+
+Usando el ejemplo anterior, al realizar:
+
+```ruby
+
+String.include Logging
+
+String.logging_enabled?
+
+'Test'.log 'ERROR', 'test message'
+
+```
+---
+
 ## Herencia, Mixins y Diseño
 * Herencia y Mixins ambos permiten escribir código en un único lugar
 * *¿Cuándo usar cada uno?*
