@@ -320,7 +320,6 @@ Y si cambiamos el orden
 
 ```ruby
 log("Hello!", time: Time.now, level: "ERROR") 
-log(level: "ERROR", time: Time.now, "Hello!")
 ```
 
 Cuando enviamos un argumento no conocido
