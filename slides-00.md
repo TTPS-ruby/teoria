@@ -19,9 +19,8 @@
 [![patriciomacadden@gmail.com](images/assets/mail.png)](mailto:patriciomacadden@gmail.com "patriciomacadden@gmail.com") 
 [![twitter](images/assets/twitter.png)](https://twitter.com/maxawen "twitter") 
 [![github](images/assets/github.png)](https://github.com/patriciomacadden "github")
-* **Ayudante:** Lautaro De León 
-[![ldeleon@cespi.unlp.edu.ar](images/assets/mail.png)](mailto:ldeleon@cespi.unlp.edu.ar "ldeleon@cespi.unlp.edu.ar")
-[![github](images/assets/github.png)](https://github.com/lndl "github")
+* **Ayudante:** Damián Candia
+[![dcandia@cespi.unlp.edu.ar](images/assets/mail.png)](mailto:dcandia@cespi.unlp.edu.ar "dcandia@cespi.unlp.edu.ar")
 
 ---
 ## Horarios de cursada
@@ -32,33 +31,27 @@
 ## Programa
 * Introducción
 * VMs: MRI, Rubinius, jRuby
-* Preparación del entorno
+* _Preparación del entorno_
 * Objetos, arreglos, hashes, símbolos, tipos estándar
 * Estructuras de control
 * Bloques e iteradores
 * E/S estandar
 * Clases de objetos, métodos y variables
 * Módulos y mixins
-* TDD
 ---
 ## Programa (continuación)
 * Gemas: rubygems
-* Rake
-* Bundler
-* HTTP
-* La web
-  * Rack
-  * Sinatra
-  * ORMs
-  * Rails
-* Deploy de aplicaciones ruby
+* Rails
+  * ActiveRecord
+  * Unit Testing
 ---
 ## Modalidad de cursada
 * Clases teórico prácticas: generalmente avanzaremos con las teorías los días
   martes, dejando los jueves para consultas o talleres prácticos
 * Aprobación de la cursada: *será necesario aprobar*
-  * Entregas de un ejercicio por práctico que se desarrollará en clase. Habrá
-    una evaluación por práctico (salvo el primero)
+  * _Dado el cambio a modalidad virtual de la materia este año estamos evaluando
+    un único parcialito acerca de los temas abordados en las prácticas o una
+    breve entrega_
   * Trabajo práctico final integrador
 * Aprobación de la materia mediante extensión del trabajo práctico y coloquio
 
