@@ -1,0 +1,10 @@
+## Deben instalarse las dependencias
+
+bundle install
+
+## Luego correr cada test
+
+ruby 01-test-color.rb
+ruby 02-test-spec.rb
+ruby 03-test-progress.rb
+ruby 04-test-nyan.rb
