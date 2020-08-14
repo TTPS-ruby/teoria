@@ -10,18 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104190300) do
-
-  create_table "publications", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "publication_type_id"
-    t.integer  "publisher_id"
-    t.string   "publisher_type"
-    t.boolean  "single_issue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["publication_type_id"], name: "index_publications_on_publication_type_id"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

@@ -10,9 +10,9 @@ class Person < ActiveRecord::Base
 #  validates :boolean_field_name, presence: true
   validates :boolean_field_name, inclusion: { in: [true, false] }
   validates :boolean_field_name, exclusion: { in: [nil] }
-#  validates :name, format: { 
-#            with: /\A[a-zA-Z]+\z/,
-#            message: "only allows letters" }
-#
+  validates :name, format: { 
+            with: /\A[a-zA-Z]+\z/,
+            message: "only allows letters" }
+
 end
 
