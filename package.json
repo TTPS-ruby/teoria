@@ -1,0 +1,22 @@
+{
+  "name": "ttps-ruby",
+  "repository": "",
+  "version": "1.0.0",
+  "description": "Tecnologías de Producción de Software. Opción Ruby",
+  "main": "index.js",
+  "license": "MIT",
+  "authors": [
+    "Christian Adrián Rodriguez <christian.rodriguez@mikroways.net>"
+  ],
+  "scripts": {
+    "start": "reveal-md src/start.md --css node_modules/reveal.js-copycode/plugin/copycode/copycode.css,src/css/styles.css --scripts src/js/clipboard.min.js,node_modules/reveal.js-copycode/plugin/copycode/copycode.js,src/js/custom.js -w",
+    "clear": "rm -r public",
+    "build": "reveal-md src/start.md --static public --static-dirs=src/static --css node_modules/reveal.js-copycode/plugin/copycode/copycode.css,src/css/styles.css --scripts src/js/clipboard.min.js,node_mo     dules/reveal.js-copycode/plugin/copycode/copycode.js,src/js/custom.js",
+    "postbuild": "cp -r src/css/* public/css/ && sed -i 's/_assets\\/src\\/css/css/g' public/index.html",
+    "print": "reveal-md src/start.md --css src/css/styles.css --print slides.pdf"
+  },
+  "dependencies": {
+    "reveal-md": "^4.1.0",
+    "reveal.js-copycode": "^1.0.0"
+  }
+}
