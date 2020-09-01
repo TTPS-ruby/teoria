@@ -27,7 +27,7 @@ revealOptions:
 </div>
 ---
 
-FILE: 01-presentacion.md
+FILE: presentacion.md
 
 ---
 
@@ -35,4 +35,4 @@ FILE: introduccion.md
 
 ---
 
-FILE: 03-lenguaje.md
+FILE: lenguaje.md
