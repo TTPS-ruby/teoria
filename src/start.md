@@ -31,7 +31,7 @@ FILE: 01-presentacion.md
 
 ---
 
-FILE: 02-introduccion.md
+FILE: introduccion.md
 
 ---
 
