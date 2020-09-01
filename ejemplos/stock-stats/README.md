@@ -30,5 +30,5 @@ Podemos comprobar el programa usando [AWK](https://www.gnu.org/software/gawk/)
 ```
 awk -F',' \
   'begin {total = 0} {total += $3} END {print "total: " total}' \
-  csv_samples/*csv
+  /tmp/ttps-bookinstore-file*.csv
 ```
