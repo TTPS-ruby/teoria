@@ -12,7 +12,7 @@
     "start": "reveal-md src/start.md --css node_modules/reveal.js-copycode/plugin/copycode/copycode.css,src/css/styles.css --scripts src/js/clipboard.min.js,node_modules/reveal.js-copycode/plugin/copycode/copycode.js,src/js/custom.js -w",
     "clear": "rm -r public",
     "build": "reveal-md src/start.md --static public --static-dirs=src/static --css node_modules/reveal.js-copycode/plugin/copycode/copycode.css,src/css/styles.css --scripts src/js/clipboard.min.js,node_modules/reveal.js-copycode/plugin/copycode/copycode.js,src/js/custom.js",
-    "postbuild": "cp -r src/css/images public/_assets/src/css/ && mv public/_assets/ public/dist/ && sed -i 's@./_assets/@./dist/_assets/@' public/index.html",
+    "postbuild": "cp -r src/css/images public/_assets/src/css/",
     "print": "reveal-md src/start.md --css src/css/styles.css --print slides.pdf"
   },
   "dependencies": {
