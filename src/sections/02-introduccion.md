@@ -1,6 +1,6 @@
 # Introducción
 ----
-## [Yukihiro Matsumoto](http://en.wikipedia.org/wiki/Yukihiro_Matsumoto)
+## [Yukihiro Matsumoto](https://en.wikipedia.org/wiki/Yukihiro_Matsumoto)
 
 
 <div class="container small">
@@ -37,10 +37,10 @@
   * Perl
   * LISP
 * Hasta el 2001 conocido sólo en Japón
-  * El libro [Programming Ruby](http://pragprog.com/book/ruby/programming-ruby) fue el 
+  * El libro [Programming Ruby](https://pragprog.com/book/ruby/programming-ruby) fue el 
     impulsor del lenguaje fuera de Japón
   * También conocido como PickAxe
-  * La primera versión puede [leerse en línea](http://ruby-doc.org/docs/ProgrammingRuby/)
+  * La primera versión puede [leerse en línea](https://ruby-doc.org/docs/ProgrammingRuby/)
 
 ----
 <!-- .slide: data-auto-animate -->
@@ -49,7 +49,7 @@
 ![pickaxe](static/pickaxe.jpg)<!-- .element: class="shade" height="500px" -->
 
 ----
-## [David Heinemeier Hansson](http://en.wikipedia.org/wiki/David_Heinemeier_Hansson)
+## [David Heinemeier Hansson](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson)
 
 <div class="container small">
   <div class="col">
@@ -61,7 +61,7 @@
 
 ![Rails](static/rails.svg)<!-- .element: height="80px" -->
 
-  * Creador de [Rails](http://rubyonrails.org/): _framework open source para desarrollo de aplicaciones web_
+  * Creador de [Rails](https://rubyonrails.org/): _framework open source para desarrollo de aplicaciones web_
   * Su primer versión liberada (1.0) fue en 2005
 
   </div>
@@ -253,8 +253,8 @@ un_string.upcase
 ```
 
 
-> Explicación en [Pickaxe](http://ruby-doc.com/docs/ProgrammingRuby/html/intro.html#S5).
-> Con [Rubular](http://rubular.com/) es posible probarlas.
+> Explicación en [Pickaxe](https://ruby-doc.com/docs/ProgrammingRuby/html/intro.html#S5).
+> Con [Rubular](https://rubular.com/) es posible probarlas.
 ----
 <div class="container small">
   <div class="col">

@@ -108,12 +108,12 @@ A medida que se presenten los temas se indicarán las fuentes apropiadas
 
 Todo el material se encuentra bajo licencia **Creative Commons**
 
-<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">TTPS - Opcion Ruby</span> por 
-<span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Christian A. Rodriguez</span> se encuentra bajo
-una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 3.0 Unported</a>.
+<span xmlns:dct="https://purl.org/dc/terms/" property="dct:title">TTPS - Opcion Ruby</span> por 
+<span xmlns:cc="https://creativecommons.org/ns#" property="cc:attributionName">Christian A. Rodriguez</span> se encuentra bajo
+una <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 3.0 Unported</a>.
 <br />
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.es">
-<img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es">
+<img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
