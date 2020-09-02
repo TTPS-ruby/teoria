@@ -3,8 +3,7 @@
 <div class="main-list">
 
 * objetos y atributos
-* clases
-* variables
+* clases y variables
 * colecciones
 * bloques e iteradores
 * módulos
@@ -16,4 +15,11 @@
 
 FILE: lenguaje/objetos.md
 
+---
+
+FILE: lenguaje/clases-variables.md
+
+---
+
+FILE: lenguaje/colecciones.md
 
