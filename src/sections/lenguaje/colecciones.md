@@ -275,5 +275,5 @@ end
 
 > `Hash.new` puede recibir como parámetro el valor usado para incializar cada
 > valor del Hash
-> [Descargar ejemplo](https://github.com/chrodriguez/ttps-ruby/tree/master/ejemplos/words-frequency)
+> [Descargar ejemplo](https://github.com/ttps/teoria/tree/master/ejemplos/words-frequency)
 
