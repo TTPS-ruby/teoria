@@ -23,3 +23,7 @@ FILE: lenguaje/clases-variables.md
 
 FILE: lenguaje/colecciones.md
 
+---
+
+FILE: lenguaje/bloques-iteradores.md
+
