@@ -3,9 +3,8 @@
 Este ejemplo muestra como organizar el código, utilizar una librería externa y
 referenciar las dependencias usando `require` y `require_relative`.
 
-Para ello, clonar este repositorio como se indica en la [documentación del
-repositorio](/README.md). Luego, acceder a la carpeta del ejemplo, y con ruby
-instalado, proceder de la siguiente forma:
+Para ello, clonar este repositorio. Luego, acceder a la carpeta del ejemplo,
+y con ruby instalado, proceder de la siguiente forma:
 
 * Generar una serie de archivos csv de ejemplo
 * Probar el programa principal
