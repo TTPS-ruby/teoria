@@ -28,6 +28,6 @@ Podemos comprobar el programa usando [AWK](https://www.gnu.org/software/gawk/)
 
 ```
 awk -F',' \
-  'begin {total = 0} {total += $3} END {print "total: " total}' \
+  'begin {total = 0} {total += $3} END {printf "total: %.3f\n", total}' \
   /tmp/ttps-bookinstore-file*.csv
 ```
