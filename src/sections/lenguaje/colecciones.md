@@ -246,6 +246,10 @@ def words_from_string(string)
   string.downcase.scan(/[\w']+/)
 end
 ```
+
+> Analizar otros ejeplos de scan. Por ejemplo probar:
+> 
+> `"0123456789".scan /.{2}/`
 ----
 ### El método que cuenta las palabras
 
@@ -274,6 +278,7 @@ end
 ```
 
 > `Hash.new` puede recibir como parámetro el valor usado para incializar cada
-> valor del Hash
-> [Descargar ejemplo](https://github.com/ttps-ruby/teoria/tree/master/ejemplos/words-frequency)
+> valor del Hash.  [Ver ejemplo](https://github.com/ttps-ruby/teoria/tree/master/ejemplos/words-frequency).
+> Es importante destacar que el ejemplo incluye tests para analizar cómo
+> desarrollar utilzando TDD.
 
