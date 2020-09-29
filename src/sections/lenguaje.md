@@ -27,3 +27,6 @@ FILE: lenguaje/colecciones.md
 
 FILE: lenguaje/bloques-iteradores.md
 
+---
+
+FILE: lenguaje/modulos.md
