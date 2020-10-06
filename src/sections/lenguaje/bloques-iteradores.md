@@ -547,11 +547,14 @@ eg = ProcExample.new
 eg.pass_in_block { |param| puts "The parameter is #{param}" }
 eg.use_proc(99)
 ```
+
+> Notar que pasando `&action` podemos almacenar el bloque en una variable. Si no
+> se usara `&` no sería posible.
 ----
 
 ## Avanzando un poco más...
-* Vemos que `call` invoca la ejecución del bloque 
-* Muchos programas utilizan esta idea para implementar **callbacks**
+* Vemos que `call` invoca la ejecución del bloque.
+* Muchos programas utilizan esta idea para implementar **callbacks**.
 * ¿Qué pasaría si retornamos el bloque?
 
 ```ruby
@@ -569,17 +572,15 @@ bo.call "cat"
 ----
 ## Proc y lambda
 * Devolver un bloque es tan útil que en Ruby hay dos formas de hacerlo:
-  * `lamda` y `Proc.new` toman un bloque y retornan un objeto
-  * El objeto retornado es de la clase `Proc`
-  * La diferencia entre `lambda` y `Proc.new` la veremos más adelante, pero ya
-    hemos mencionado que `lambda` controla los parámetros que requiere el
-    bloque, mientras que `Proc` no lo hace
+  * `lamda` y `Proc.new` toman un bloque y retornan un objeto.
+  * El objeto retornado es de la clase `Proc`.
+
+> Ya hemos mencionado que `lambda` controla los parámetros que requiere el
+> bloque  mientras que `Proc` no lo hace.
 
 ----
 ## Bloques como Closures
-* Recordamos haber mencionado que los bloques pueden utilizar variables que
-  están dentro del alcance del bloque
-* Veremos ahora un uso diferente de un bloque haciendo esto
+Los bloques pueden utilizar variables que están dentro del alcance del bloque.
 
 ```ruby
 def n_times(thing)
@@ -591,17 +592,17 @@ p1.call(4)
 p2 = n_times("Hola ")
 p2.call(3)
 ```
+> ¿Qué hace el ejemplo anterior?
 
 ----
 ## ¿Qué es un Closure?
-* El método `n_times` referencia el parámetro `thing` que es usado por el bloque
-* Aunque en las llamadas a `call` (y por ende en la ejecución del bloque) el 
-  parámetro `thing` está fuera del alcance, el parámetro se mantiene accesible
-  dentro del bloque
-* Esto es un closure:
-  * Variables en el alcance cercano que son referenciadas por el bloque se
-    mantienen accesibles por la vida del bloque y la vida del objeto Proc creado
-    para este bloque
+* El método `n_times` referencia un parámetro `thing` que es usado dentro el bloque.
+* Aunque en las llamadas a `call` el parámetro `thing` está fuera del alcance,
+  el parámetro se mantiene accesible dentro del bloque.
+
+_**Closure:** variables en el alcance cercano que son referenciadas por el bloque
+se mantienen accesibles por la vida del bloque y la vida del objeto Proc creado
+para este bloque._
 
 ----
 ## Otro ejemplo de Closure
@@ -618,7 +619,7 @@ let_me_see.call
 ```
 
 ----
-## Notación alternativa
+### Lambda: notación alternativa
 
 ```ruby
 lambda { |params| ... }
@@ -639,6 +640,28 @@ proc3.call "dog", "elk"
 ## Custom while
 Reimplementamos un while usando bloques
 
+<div class="container">
+
+<div class="col fragment">
+
+### Proc
+```ruby
+def my_while(cond, &body)
+  while cond.call
+    body.call
+  end
+end
+
+a = 0
+my_while(Proc.new { a < 3 }) do
+  puts a
+  a += 1
+end
+```
+</div>
+<div class="col fragment">
+
+### Lamda
 ```ruby
 def my_while(cond, &body)
   while cond.call
@@ -652,13 +675,15 @@ my_while -> { a < 3 } do
   a += 1
 end
 ```
+</div>
+</div>
 
 ----
 ### Lista de parámetros a un bloque
 * Los argumentos a un bloque podrán ser:
-  * Argumentos splat
-  * Inicializados con un valor por defecto
-  * Bloques como parámetro (usando &)
+  * Argumentos splat.
+  * Inicializados con un valor por defecto.
+  * Bloques como parámetro (usando `&`).
 ----
 ### Lista de parámetros a un bloque
 ```ruby
@@ -676,6 +701,7 @@ proc2 = -> a, *b, &block do
 end
 proc2.call(1, 2, 3, 4) { puts "in block2" }
 ```
+> Más adelante veremos en detalle cómo funciona el splat.
 
 ----
 ### El símbolo usado como bloque
@@ -694,14 +720,17 @@ Analizando qué es lo que sucede en el siguiente ejemplo
 ```ruby
 o = Object.new
 [1,2,3].inject &o
-# Esto da un error: TypeError: wrong argument type Object (expected Proc)
+# TypeError: wrong argument type Object (expected Proc)
 ```
 
 ----
 ### El símbolo usado como bloque
 
-Que se soluciona con:
-</div>
+Una solución es implementar `to_proc`:
+
+<div class="container">
+
+<div class="col">
 
 ```ruby
 class Object
@@ -709,12 +738,30 @@ class Object
     Proc.new {}
   end
 end
+o = Object.new
+[1,2,3].inject &o
 ```
+
+</div>
+<div class="col small">
+
+* No falla, pero no hace lo esperado.
+* Sólo convertimos a un bloque vacío.
+* Un bloque sin acciones no es útil.
+* Menos en el contexto de `inject`.
+</div>
+</div>
 ----
 ### El símbolo usado como bloque
 
+<div class="small">
+
 Analizando entonces lo que sucedió inferimos que la clase `Symbol` implementa
 `#to_proc` de la siguiente forma:
+</div>
+
+<div class="container">
+<div class="col">
 
 ```ruby
 class Symbol
@@ -723,30 +770,70 @@ class Symbol
   end
 end
 ```
+</div>
+<div class="col">
 
-<div class="small">
+```ruby
 
-El ejemplo `[1,2,3].map &:to_s ` ¡funciona perfecto!
+[1,2,3].map &:to_s
 
-**Pero no funciona `[1,2,3].inject &:+`**
+[1,2,3].inject &:+
+
+
+```
+</div>
+</div>
+
+**¡¡Probemos!!**
+<div class="small fragment">
+
+Funciona **`map`** pero no **`inject`**. _Observemos bien el error._
 </div>
 ----
 ### El símbolo usado como bloque
 
+
+<div class="small">
 Tratamos de solucionar la implementación anterior:
+</div>
+
+<div class="container">
+<div class="col">
 
 ```ruby
 class Symbol
   def to_proc
-    lambda { |obj, args| obj.send(self, *args) }
+    lambda do |obj, args| 
+      obj.send(self, *args)
+    end
   end
 end
 ```
-<div class="small">
+</div>
+<div class="col">
 
-El ejemplo `[1,2,3].inject &:+` ¡funciona pefecto!
+```ruby
 
-**Pero no funciona `[1,2,3].map &:to_s`**
+[1,2,3].map &:to_s
+
+
+[1,2,3].inject &:+
+
+
+
+```
+</div>
+</div>
+
+**¡¡Probemos!!**
+<div class="small fragment">
+
+Funciona **`inject`** pero no **`map`**. _Observemos bien el error._
+</div>
+<div class="small fragment">
+
+> Claro ejemplo de solucionar algo y romper otra cosa. Caso que se controla
+> utilizando tests de unidad.
 </div>
 ----
 ### El símbolo usado como bloque
@@ -759,4 +846,7 @@ class Symbol
     lambda { |obj, args=nil| obj.send(self, *args) }
   end
 end
+
+[1,2,3].map &:to_s
+[1,2,3].inject &:+
 ```
