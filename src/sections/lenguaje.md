@@ -8,7 +8,7 @@
 * bloques e iteradores
 * módulos
 * excepciones
-* conceptos avanzados (ex slide-09)
+* conceptos avanzados
 </div>
 
 ---
@@ -30,3 +30,9 @@ FILE: lenguaje/bloques-iteradores.md
 ---
 
 FILE: lenguaje/modulos.md
+
+---
+
+FILE: lenguaje/excepciones.md
+
+

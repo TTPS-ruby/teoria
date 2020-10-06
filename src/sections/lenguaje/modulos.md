@@ -609,7 +609,7 @@ Podemos verificar que el último módulo incluido aparece detrás de la clase
 ```
 
 ----
-## Extend
+## extend
 
 Utilizar `#extend` en una clase importará los métodos del módulo como métodos de
 clase.
@@ -623,7 +623,7 @@ extender los métodos de clase. Entonces se necesitarían **dos modulos diferent
 para cada caso.**
 
 ----
-## Extend
+## extend
 
 La siguiente estrategia permite crear dos módulos para extender clases y objetos
 en un mismo código:
@@ -646,7 +646,7 @@ module Logging
 end
 ```
 ----
-## Extend vía include
+## extend vía include
 
 Usando el ejemplo anterior, al realizar:
 
