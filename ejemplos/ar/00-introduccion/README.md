@@ -31,13 +31,14 @@ insert into products(name) values('pelota'),('botines');
 ## El programa
 
 Desarrollamos a modo de ejemplo una aplicación principal llamada `main.rb` que
-lista los productos en la base de datos. Si no se crea la base de datos antes de
-correr el ejemplo (eliminando el archivo creado en la sección anterior), se
-recibirá un error porque AR no podrá conectar con la base de datos configurada.
+lista los productos en la base de datos.
 
 > Observar el uso de bundler en el ejemplo analizando `Gemfile`
 
 ```bash
-bundle exec ruby main.rb
+ruby main.rb
 ```
 
+> La aplicación fallará si la base de datos no es creada previamente como se
+> indica en la sección anterior. El path a la base de datos puede parametrizarse
+> con la variable de ambiente DB_NAME

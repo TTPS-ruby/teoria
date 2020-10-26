@@ -36,3 +36,11 @@ FILE: introduccion.md
 ---
 
 FILE: lenguaje.md
+
+---
+
+FILE: gemas.md
+
+---
+
+FILE: active-record.md

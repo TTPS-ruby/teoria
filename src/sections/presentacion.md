@@ -32,6 +32,7 @@ Dividimos el programa en cuatro secciones principales:
 * **Introducción**
 * **El lenguaje**
 * **Gemas**
+* **Active Record**
 * **Rails**
 ----
 <!-- .slide: data-auto-animate -->
@@ -44,13 +45,14 @@ Dividimos el programa en cuatro secciones principales:
   * Presentamos las diferentes implementaciones de ruby y su instalación.
 * **El lenguaje**
 * **Gemas**
+* **Active Record**
 * **Rails**
 ----
 <!-- .slide: data-auto-animate -->
 ## Programa
 
 * **Introducción**
-* **El lenguaje**: en esta sección profundizamos sobre el lenguaje:
+* **El lenguaje**: profundizamos sobre el lenguaje:
   * Objetos y atributos
   * Clases y variables
   * Colecciones
@@ -59,6 +61,7 @@ Dividimos el programa en cuatro secciones principales:
   * Excepciones
   * Conceptos avanzados
 * **Gemas**
+* **Active Record**
 * **Rails**
 ----
 <!-- .slide: data-auto-animate -->
@@ -70,6 +73,7 @@ Dividimos el programa en cuatro secciones principales:
 abordaremos:
   * Manejo de dependencias
   * Bundler
+* **Active Record**
 * **Rails**
 
 ----
@@ -79,6 +83,21 @@ abordaremos:
 * **Introducción**
 * **El lenguaje**
 * **Gemas**
+* **Active Record:** aprendemos a conectar con bases de datos:
+  * Introducción
+  * CRUD
+  * Migraciones
+  * Validaciones
+  * Asociaciones
+* **Rails** 
+----
+<!-- .slide: data-auto-animate -->
+## Programa
+
+* **Introducción**
+* **El lenguaje**
+* **Gemas**
+* **Active Record**
 * **Rails:** el framework más utilizado por los desarrolladores Ruby. En esta sección
 aprenderemos a trabajar con este framework:
   * Conceptos básicos
