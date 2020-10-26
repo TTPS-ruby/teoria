@@ -51,12 +51,13 @@ Dividimos el programa en cuatro secciones principales:
 
 * **Introducción**
 * **El lenguaje**: en esta sección profundizamos sobre el lenguaje:
-  * Objetos, arreglos, hashes, símbolos, tipos estándar
-  * Estructuras de control
+  * Objetos y atributos
+  * Clases y variables
+  * Colecciones
   * Bloques e iteradores
-  * E/S estandar
-  * Clases de objetos, métodos y variables
-  * Módulos y mixins
+  * Módulos
+  * Excepciones
+  * Conceptos avanzados
 * **Gemas**
 * **Rails**
 ----
