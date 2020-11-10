@@ -1,0 +1,17 @@
+# referencias
+
+<div class="main-list">
+
+* active record
+
+</div>
+----
+## Referencias
+
+* [API](http://api.rubyonrails.org/classes/ActiveRecord/Base.html)
+* [Active Record base](http://edgeguides.rubyonrails.org/active_record_basics.html)
+* [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
+* [Active Record Querying](http://edgeguides.rubyonrails.org/active_record_querying.html)
+* [Active Record Validations](http://edgeguides.rubyonrails.org/active_record_validations.html)
+* [Active Record Callbacks](http://edgeguides.rubyonrails.org/active_record_callbacks.html)
+* [Active Record Migrations](http://edgeguides.rubyonrails.org/migrations.html)
