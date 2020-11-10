@@ -1,5 +1,4 @@
 require 'bundler'
-require 'yaml'
 Bundler.require
 
 require_relative 'models/person'

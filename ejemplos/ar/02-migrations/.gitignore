@@ -1,3 +1,4 @@
 db/*sqlite*
 db/migrate
-db/schema
+db/schema.rb
+
