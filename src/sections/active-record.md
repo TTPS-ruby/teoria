@@ -117,6 +117,8 @@ Los nombres de las clases se pluralizan para encontrar las tablas
 ----
 ## Ejemplo de mapeos
 
+<div class="small">
+
 Las definiciones de estos mapeos son mediante otra gema llamda
 **`ActiveSupport`**.
 
@@ -128,9 +130,16 @@ Las definiciones de estos mapeos son mediante otra gema llamda
 | Mouse          | mice          |
 | Person         | people        |
 
-<div class="small fragment">
+<div class="fragment">
 
 Ver [ActiveSupport::Inflector](http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html)
+
+```
+irb -r active_support/all
+ActiveSupport::Inflector.pluralize 'person'
+```
+
+</div>
 </div>
 ----
 <!-- .slide: data-auto-animate -->
@@ -359,15 +368,19 @@ User.create!
 ----
 ## ¿Qué son las migraciones?
 
+* Son una implementación de [schema migrations](https://en.wikipedia.org/wiki/Schema_migration).
 * Las migraciones son una DSL para el manejo de esquemas de bases de datos
   llamados migraciones
 * Las migraciones se almacenan en archivos que son ejecutados contra una base de
   datos soportada por Active Record usando `rake`
 
 ----
+<!-- .slide: data-auto-animate -->
 ## Migraciones
 
 Ejemplo de una migración que crea una tabla
+
+<div class="small">
 
 ```ruby
 class CreatePublications < ActiveRecord::Migration
@@ -386,8 +399,10 @@ class CreatePublications < ActiveRecord::Migration
   end
 end
 ```
+</div>
 
----
+----
+<!-- .slide: data-auto-animate -->
 ## Migraciones
 
 * Las migraciones permiten tener un registro en la misma base de datos que
@@ -399,11 +414,13 @@ end
 * La DSL es agnóstico a la base de datos: funciona en MySQL, SQLite, Oracle,
   Postgres, etc
 
-<small>
-[Descargar ejemplo](images/samples/15/01-migrations.zip)
-</small>
+----
 
----
+## Ejemplo de migraciones
+
+[Ver ejemplo](https://github.com/ttps-ruby/teoria/tree/master/ejemplos/ar/02-migrations)
+
+----
 ## Alternativas a las Migraciones
 
 Otros productos que hacen algo similar:
@@ -411,12 +428,16 @@ Otros productos que hacen algo similar:
  * https://flywaydb.org/
  * http://www.liquibase.org/
 
----
-# Active Record
+----
+# validaciones
 
-##validaciones
+<div class="main-list">
 
----
+* active record
+
+</div>
+
+----
 ## Introducción
 
 * Garantizan que se guarden datos válidos en la base de datos
