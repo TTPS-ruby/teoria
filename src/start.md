@@ -44,3 +44,7 @@ FILE: gemas.md
 ---
 
 FILE: active-record.md
+
+---
+
+FILE: rails.md
