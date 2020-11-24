@@ -27,7 +27,7 @@
 * **[actionpack](https://github.com/rails/rails/tree/master/actionpack):**
   responsable del manejo de requerimientos y respuestas HTTP. Se encarga del
   ruteo mapeando URLs en acciones mediante controladores. Las respuestas se
-  generan a partir de vistas. _Corresponde al M y C del paradigma MVC_.
+  generan a partir de vistas. _Corresponde al V y C del paradigma MVC_.
 * **[actiontext](https://github.com/rails/rails/tree/master/actiontext):**
   manejo de texto enriquecido y su edición en rails.
 * **[actionview](https://github.com/rails/rails/tree/master/actionview):**

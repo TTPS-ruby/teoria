@@ -20,9 +20,9 @@
 <div class="small" >
 
 * Una buena práctica es usar variables de entorno dado que:
-  * La soportan todos los SO, así como PaaS como Heroku y otras
+  * La soportan todos los SO, PaaS como Heroku y otras
     plataformas de deployment como Swarm y Kubernetes.
-  * Las variables de ambiente pueden accederse desde ruby.
+  * Obviamente que las variables de ambiente pueden accederse desde ruby.
   * Mantienen la privacidad del proyecto de forma independiente.
   * La gema **[figaro](https://github.com/laserlemon/figaro)** permite setear
     variables desde el shell o desde un archivo de configuración
@@ -104,3 +104,36 @@ development:
   GMAIL_USERNAME: otherusername
   GMAIL_PASSWORD: otherpassword
 ```
+
+----
+
+## Rails credentials
+
+* A partir de rails 5.2, al crear una aplicación rails se crea **`config/credentials.yml.enc`**.
+* Las credenciales en este archivo se editan usando **`rails
+  credentials:edit`**:
+  * Este comando generará si no existe una _**clave maestra**_.
+  * Con este comando podremos editar `credentials.yml.enc` y versionarlo de
+    forma segura.
+  * Nunca debemos versionar la clave maestra.
+----
+
+## Ejemplo credentials
+
+<div class="small">
+
+* Si usamos **`rails credentials:edit`** manejamos una configuración con todos
+  los parámetros de cada ambiente en forma jerárquica.
+* Si usamos **`rails credentials:edit --environment development`** tendremos un
+  par de archivos por ambiente: 
+  * **`config/credentials/development.yml.enc`**
+  * **`config/credentials/development.key`**
+
+**Usamos desde rails las credenciales de la siguiente forma:**
+
+```ruby
+Rails.application.credentials[:some_key] # Only specific value
+Rails.application.credentials.config # all configured values
+```
+
+</div>

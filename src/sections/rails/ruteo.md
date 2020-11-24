@@ -24,24 +24,28 @@ Es importante diferenciar un **application server** de un **web server**.
 * Ingresamos a [http://localhost:3000/](http://localhost:3000/)
 * Veremos la página de información por defecto de rails.
 
-**Creemos el archivo `public/index.html`**
+Creamos el archivo **`public/index.html`**
 
 ```html
 <h1> Hello World </h1>
 ```
 
-> * Actualizamos la página y...rails observará los cambios de la carpeta `public/`
-> * Si no se especifica ningún archivo en la URL, se asume **index.html**
+> Actualizamos la página y...rails observará los cambios de la carpeta
+> `public/`. Si no se especifica ningún archivo en la URL, se asume **index.html**
 
 ----
 ## Error de ruteo
 
-¿Qué sucede si accedemos a [http://localhost:3000/about.html](http://localhost:3000/about.html)?
+¿Qué sucede si accedemos a [/about.html](http://localhost:3000/about.html)?
 
-![routing error](images/16/01-routing-error.png)
+![routing error](static/rails-routing-error.png)
+<!--.element: class="fragment" -->
 
----
-## Agregamos public/about.html
+----
+
+## Solucionamos el error
+
+Agregamos **`public/about.html`**:
 
 ```html
 
@@ -49,21 +53,25 @@ Es importante diferenciar un **application server** de un **web server**.
 
 ```
 
-*Ahora todo debería funcionar bien*
+> Si volvemos a probar, ahora todo debería funcionar bien.
+<!-- .element: class="fragment" -->
 
----
-# Ruteo
----
-## Introduciendo el ruteo
-* El principio de *convention over configuration* gobierna el ruteo en rails
+----
+## Ruteo dinámico
+
+* El principio de *CoC* gobierna el ruteo en rails.
 * Si un navegador solicita **index.html** entonces Rails servirá la página desde
-  el directorio `public/` por defecto
-	* No se necesita configuración para ello
-* ¿Si queremos cambiar este comportamiento?
-	* Haremos que la home page sea ahora el about
-	* Debemos **eliminar** public/index.html: `rm public/index.html`
+  el directorio **`public/`**.
+  * No se necesita configuración para ello
 
----
+<div class="fragment" >
+
+* ¿Si queremos cambiar este comportamiento?
+  * Haremos que la home page sea ahora el about
+  * Debemos **_eliminar_** **`public/index.html`**
+</div>
+
+----
 ## Editamos config/routes.rb
 
 ```ruby
@@ -72,97 +80,73 @@ Rails.application.routes.draw do
 end
 ```
 
----
-# Una reflexión
-* El caso anterior es un ejemplo de la *magia de rails* 
-* Algunos desarrolladores consideran que *convention over configuration* es
-  **magia negra**
-* No es obvio el por qué las páginas se sirven de `public/`
+> Indicamos que al acceder a la raíz del proyecto redirija a `about.html`. El
+> concepto de redirect utiliza mensajes [HTTP 301](https://httpstatuses.com/)
+<!-- .element: class="fragment"-->
+
+----
+## Una reflexión
+
+* No es obvio el por qué las páginas se sirven de **`public/`**.
 * Si se desconoce esta convención, podemos rompernos la cabeza buscando donde se
-  mapea que http://localhost:3000 sirva `public/index.html`
-	* El código que implementa esto, está enterrado profundamente en el corazón de
-	  rails
----
+  mapea que http://localhost:3000 sirva **`public/index.html`**
+* La razón es que el application server de rails generalmente se utiliza detrás
+  de un web server por cuestiones de eficiencia.
+----
 ## Request & response
-* Analizaremos el patron MVC desde la perspectiva de la web
+
+
 * Debemos considerar que la WEB no es más que navegadores que solicitan páginas
-  a un servidor
-* Los navegadores realizan **requerimientos** (request)
----
-## Request & response
+  a un servidor.
+* Los navegadores realizan **requerimientos** (request).
 * Los servidores **responden** (response) a estos requerimientos, enviando, por ejemplo, un
   HTML.
-  * Dependiendo en los encabezados del HTML, el navegador deberá realizar más
-    requerimientos para obtener estilos, javascripts e imagenes
 * La simplicidad de HTTP hace que no haya más que los requerimientos de un
-  navegador y las respuestas de un servidor
-  * Hoy día existe además el streaming de audio/video que requieren un pipe
-    entre el navegador y el servidor, pero aún así, un requerimiento y respuesta inicial 
-    hacen posible la incialización del stream
+  navegador y las respuestas de un servidor.
 
----
+----
 ## El ciclo request / response
 
-![request repsonse](images/16/02-request-response.png)
+![request repsonse](static/rails-request-response.png)
 
----
-## Analizando el ciclo desde el navegador
-* Es aconsejable usar [Google Chrome](https://www.google.com/chrome)
+----
+<!-- .slide: data-auto-animate -->
+## El ciclo desde el navegador
+
+<div class="small">
+
+* Es aconsejable usar el navegador para observar las peticiones HTTP.
 * Antes de investigar algo, es conveniente utilizar el **modo incógnito**: que
-  se accede usando **Shift+Ctrl+N** (**Shift+Ctrl+P** en Firefox)
+  se accede usando **Shift+Ctrl+N** (**Shift+Ctrl+P** en Firefox).
   * Alternativamente puede limpiarse la caché del navegador para así limpiar
-    cualquier solicitud previamente cacheada por el navegador 
-* Abrimos la vista *Developer Tools* usando **Shift+Ctrl+I**
-  * Seleccionamos el tab **Network**
-  * Realizamos el requerimiento [http://localhost:3000/about.html](http://localhost:3000/about.html)
+    cualquier solicitud previamente cacheada por el navegador.
+* Abrimos la vista *Developer Tools* usando **Shift+Ctrl+I**:
+  * Seleccionamos el tab **Network**.
+  * Realizamos el requerimiento [http://localhost:3000/about.html](http://localhost:3000/about.html).
   * Visualizaremos los archivos recibidos desde el servidor: sólo uno
-    **about.html**
----
-## Analizando el ciclo desde el navegador
+    **about.html**.
 
-Así debe verse el requerimiento
+> Notar cuando no es "fresco" el requerimiento
+<!-- .element: class="fragment" -->
+</div>
+----
+<!-- .slide: data-auto-animate -->
+## El ciclo desde el navegador
 
-![ejemplo chrome ok](images/16/03-navegador-ok.png)
+* Verificar las cabeceras de un requerimiento HTTP 304.
+* Específicamente observar el detalle del campo **`If-Modified-Since`**.
+* Contrastar con la salida del comando **`TZ=UTC stat public/about.html`**.
+* Ejecutar **`touch public/about.html`**.
+* Cargar de nuevo la página y verificar el código de retorno.
 
----
-## Analizando el ciclo desde el navegador
+----
+<!-- .slide: data-auto-animate -->
+## El ciclo desde el navegador
 
-Notar cuando no es "fresco" el requerimineto
-
-![ejemplo chrome ok](images/16/03-navegador-not-ok.png)
-
----
-## El detalle del requerimiento
-
-<small>
-Cliqueando sobre el nombre del archivo, y luego sobre la solapa **Headers**, se visualiza el detalle del requerimiento y su respuesta
-</small>
-
-![ejemplo chrome detalle](images/16/04-navegador-detalle.png)
-
----
-## Analizamos lo que muestra el navegador
-* Que el requerimiento se compone de:
-  * Un request a la URL http://localhost:3000/about.html 
-  * Que el método HTTP empleado fue GET
-  * Los headers del request incluyendo cookies y el identificador del UA
-* La respuesta se compone de:
-  * El código de estado: 200 OK o 304 Not modified
-  * Los headers de la respuesta: incluyendo fecha y hora, así como el
-    identificador del servidor
-  * HTML
-
-<small>
-Ahora podemos analizar cómo el requerimiento a **http://localhost:3000/**
-devuelve dos entradas por el redirect
-</small>
-
----
-## Analizamos ahora desde el lado del servidor
 * Hasta ahora vimos las herramientas que disponemos desde el navegador
-  * Pero no podemos visualizar qué es lo que sucede en el servidor
+* Pero no podemos visualizar qué es lo que sucede en el servidor
 
-**La ventana de consola del servidor muestra:**
+**Analizamos la consola del servidor:**
 
 ```bash
 
@@ -170,23 +154,7 @@ Started GET "/" for 127.0.0.1 at ...
 
 ```
 
-<small>
-Es importante destacar que no hay logs para los archivos servidos desde la
-carpeta `public/`
-</small>
-
----
-# Model View Controller
----
-## MVC en la web
-
-El siguiente gráfico muestra qué sucede en el servidor durante el ciclo
-request-response 
-
-![ciclo request response](images/16/05-ciclo-completo-rails.png)
-
-<small>
-Algunos expertos opinan que la arquitectura de la web no se ajusta al original
-diseño de MVC creado para aplicaciones visuales de escritorio
-</small>
+> Es importante destacar que no hay logs para los archivos servidos desde la
+> carpeta **`public/`**.
+<!-- .element: class="fragment" -->
 

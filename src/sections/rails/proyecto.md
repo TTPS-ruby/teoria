@@ -25,7 +25,7 @@ aplicación rails por defecto:
 </div>
 
 ```bash
-cd ttps-ruby && bundle info
+cd ttps-ruby && bundle list
 ```
 
 > La instalación por defecto requiere node y yarn para poder integrar [webpacker](https://github.com/rails/webpacker/).
@@ -80,7 +80,7 @@ server_.
 | **`config/`** | Carpetas y archivos de configuración |
 | **`db/`** | Carpetas y archivos de la DB |
 | **`public/`** | Archivos sin código ruby para ser servidos por un web server |
-| **`Rakefile/`** | Directivas para rake. Tareas de gestión del proyecto |
+| **`Rakefile`** | Directivas para rake. Tareas de gestión del proyecto |
 | **`bin/`** | Ejecutables del proyecto |
 | **`config.ru`** | Configuración para Rack |
 | **`lib/`** | Directorio para código ruby variado |
