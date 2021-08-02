@@ -12,7 +12,7 @@
 
 | Ayudantes | Contacto |
 | ---- | --- |
-|Lic. Patricio Mac Adden | [![patriciomacadden@gmail.com](static/mail.svg)](mailto:patriciomacadden@gmail.com "patriciomacadden@gmail.com")<!-- .element: class="social"--> [![twitter](static/twitter.svg)](https://twitter.com/maxawen "twitter")<!-- .element: class="social"--> [![github](static/github.svg)](https://github.com/patriciomacadden "github")<!-- .element: class="social"--> | 
+| Lucas Di Cunzolo | [![lucasdicunzolo@gmail.com](static/mail.svg)](mailto:lucasdicunzolo@gmail.com "lucasdicunzolo@gmail.com")<!-- .element: class="social"--> [![twitter](static/twitter.svg)](https://twitter.com/lucasdc96 "twitter")<!-- .element: class="social"--> [![github](static/github.svg)](https://github.com/lucasdc6 "github")<!-- .element: class="social"--> | 
 | Damián Candia | [![dcandia@cespi.unlp.edu.ar](static/mail.svg)](mailto:dcandia@cespi.unlp.edu.ar "dcandia@cespi.unlp.edu.ar")<!-- .element: class="social"--> |
 
 ----
